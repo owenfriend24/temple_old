@@ -1,9 +1,16 @@
+ . ~/analysis/temple/.profile_onesubject
+
+
+
 Preprocessing
 
+source .profile_onesubject
 
 convert source data to BIDS-formatted raw data
 
-slaunch -J heudiconv "temple_heudiconv.sh {} $SCRATCH/temple/sourcedata $HOME/analysis/temple/bin/temple_heuristic.py $SCRATCH/temple/rawdata" $SUBJNOS -N 1 -n 1 -r 00:30:00 -p development
+slaunch -J heudiconv -t "temple_heudiconv.sh {} $WORK/temple/sourcedata $HOME/analysis/temple/bin/temple_heuristic.py $SCRATCH/temple/rawdata" $SUBIDS -N 1 -n 1 -r 00:30:00 -p development
+
+idev
 
 
 post-process raw data to add fieldmap information
@@ -13,4 +20,18 @@ temple_bids_post.py $SCRATCH/temple/rawdata
 
 run minimal preprocessing using fMRIprep
 
-slaunch -J fmriprep “temple_fmriprep.sh $SCRATCH/temple {}" $SUBJNOS -N 1 -n 1 -r 08:00:00 -p normal
+slaunch -J fmriprep “temple_fmriprep.sh $SCRATCH/temple {}" $BIDIDS -N 1 -n 1 -r 08:00:00 -p normal
+
+
+
+needs to be temple_016
+
+- t to test
+
+tail file to see end of file
+
+squeue - u ofriend ----after --- launch shows progress
+
+.out file for output
+
+idev 
