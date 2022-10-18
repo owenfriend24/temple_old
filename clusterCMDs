@@ -1,10 +1,14 @@
- . ~/analysis/temple/.profile_onesubject
-
-
-
 Preprocessing
 
+
+
+
+ . ~/analysis/temple/.profile_onesubject
 source .profile_onesubject
+
+
+
+
 
 convert source data to BIDS-formatted raw data
 
@@ -13,14 +17,51 @@ slaunch -J heudiconv -t "temple_heudiconv.sh {} $WORK/temple/sourcedata $HOME/an
 idev
 
 
+
+
+
+
 post-process raw data to add fieldmap information
 
 temple_bids_post.py $SCRATCH/temple/rawdata
 
 
+
+#BIDS events
+temple_bids_events.py ~/$WORK/temple/sourcebehav/ ~/$SCRATCH/temple/wherever to save
+
+
+Glm & ?
+
+
+
 run minimal preprocessing using fMRIprep
 
 slaunch -J fmriprep “temple_fmriprep.sh $SCRATCH/temple {}" $BIDIDS -N 1 -n 1 -r 08:00:00 -p normal
+
+
+temple_pull_fmriprep_confounds.sh ?
+temple_pull_bids_beh.sh ?
+
+
+
+Template ROIs
+temple_template_rois.sh
+
+
+
+Smooth
+temple_smooth.sh
+
+
+
+
+
+
+Analyses
+
+
+
 
 
 
