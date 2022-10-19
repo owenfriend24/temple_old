@@ -1,23 +1,14 @@
 Preprocessing
 
-
-
-
  . ~/analysis/temple/.profile_onesubject
 source .profile_onesubject
-
-
-
 
 
 convert source data to BIDS-formatted raw data
 
 slaunch -J heudiconv -t "temple_heudiconv.sh {} $WORK/temple/sourcedata $HOME/analysis/temple/bin/temple_heuristic.py $SCRATCH/temple/rawdata" $SUBIDS -N 1 -n 1 -r 00:30:00 -p development
 
-idev
-
-
-
+if in idev session/on compute node already, don't need slaunch
 
 
 
@@ -28,16 +19,15 @@ temple_bids_post.py $SCRATCH/temple/rawdata
 
 
 #BIDS events
-temple_bids_events.py ~/$WORK/temple/sourcebehav/ ~/$SCRATCH/temple/wherever to save
+temple_bids_events.py ~/$WORK/temple/sourcebehav/ ~/$SCRATCH/temple/behavdata
 
 
 Glm & ?
 
 
-
 run minimal preprocessing using fMRIprep
 
-slaunch -J fmriprep “temple_fmriprep.sh $SCRATCH/temple {}" $BIDIDS -N 1 -n 1 -r 08:00:00 -p normal
+slaunch -J fmriprep -t “temple_fmriprep.sh $SCRATCH/temple {}" $BIDIDS -N 1 -n 1 -r 08:00:00 -p normal
 
 
 temple_pull_fmriprep_confounds.sh ?
@@ -46,19 +36,26 @@ temple_pull_bids_beh.sh ?
 
 
 Template ROIs
-temple_template_rois.sh
+
+slaunch -J template_rois -t "temple_template_rois.sh /work2/03206/mortonne/frontera/.cache/templateflow/ MNI152NLin2009cAsym ~/$SCRATCH/temple/ {}" $BIDIDS -N 2 -n 38 -p development -r 00:30:00
 
 
 
 Smooth
+
+slaunch -J smooth -t "temple_smooth.sh ~/scratch/temple/fmriprep-20.2.1/fmriprep/ ~/scratch/temple/ {} MNI152NLin2009cAsym 4" $BIDIDS -N 2 -n 38 -r 02:00:00 -p development
+
 temple_smooth.sh
 
 
 
-
-
-
 Analyses
+
+
+
+
+
+
 
 
 
