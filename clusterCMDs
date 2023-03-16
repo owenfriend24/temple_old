@@ -6,7 +6,7 @@ source .profile_onesubject
 
 convert source data to BIDS-formatted raw data
 
-slaunch -J heudiconv -t "temple_heudiconv.sh {} $WORK/temple/sourcedata $HOME/analysis/temple/bin/temple_heuristic.py $SCRATCH/temple/rawdata" $SUBIDS -N 1 -n 1 -r 00:30:00 -p development
+slaunch -J heudiconv "temple_heudiconv.sh {} $WORK/temple/sourcedata $HOME/analysis/temple/bin/temple_heuristic.py $SCRATCH/temple/rawdata" $SUBIDS -N 1 -n 1 -r 00:30:00 -p development
 
 if in idev session/on compute node already, don't need slaunch
 
@@ -19,7 +19,7 @@ temple_bids_post.py $SCRATCH/temple/rawdata
 
 
 #BIDS events
-temple_bids_events.py ~/$WORK/temple/sourcebehav/ ~/$SCRATCH/temple/behavdata
+temple_bids_events.py /$WORK/temple/sourcebehav/ /$SCRATCH/temple/behavdata
 
 
 Glm & ?
@@ -27,7 +27,7 @@ Glm & ?
 
 run minimal preprocessing using fMRIprep
 
-slaunch -J fmriprep -t “temple_fmriprep.sh $SCRATCH/temple/rawdata {}" $BIDIDS -N 1 -n 1 -r 08:00:00 -p normal
+slaunch -J fmriprep “temple_fmriprep.sh $SCRATCH/temple/rawdata {}" $BIDIDS -N 1 -n 1 -r 08:00:00 -p normal
 
 
 temple_pull_fmriprep_confounds.sh ?
