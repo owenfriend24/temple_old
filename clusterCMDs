@@ -27,7 +27,7 @@ Glm & ?
 
 run minimal preprocessing using fMRIprep
 
-slaunch -J fmriprep -t “temple_fmriprep.sh $SCRATCH/temple {}" $BIDIDS -N 1 -n 1 -r 08:00:00 -p normal
+slaunch -J fmriprep -t “temple_fmriprep.sh $SCRATCH/temple/rawdata {}" $BIDIDS -N 1 -n 1 -r 08:00:00 -p normal
 
 
 temple_pull_fmriprep_confounds.sh ?
