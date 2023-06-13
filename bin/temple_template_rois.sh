@@ -14,7 +14,7 @@ subject=$4
 
 subjdir=${outdir}/sub-${subject}
 
-reference_name=task-struct_run-1_space-${space}_desc-brain_mask
+reference_name=task-arrow_run-1_space-${space}_desc-brain_mask
 
 reference_file=${subjdir}/func/sub-${subject}_${reference_name}.nii.gz
 
