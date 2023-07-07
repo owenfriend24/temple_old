@@ -6,7 +6,9 @@ source .profile_onesubject
 
 convert source data to BIDS-formatted raw data
 
+'''
 slaunch -J heudiconv "temple_heudiconv.sh {} $WORK/temple/sourcedata $HOME/analysis/temple/bin/temple_heuristic.py $SCRATCH/temple/rawdata" $SUBIDS -N 1 -n 1 -r 00:30:00 -p development
+'''
 
 if in idev session/on compute node already, don't need slaunch
 
