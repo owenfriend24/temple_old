@@ -35,25 +35,25 @@ cd /Users/owenfriend/Document/Temple_Local
 betaseries-bids [OPTIONS] data_dir fmriprep_dir out_dir subject task run space mask_name mask_file events_field
 ```
 * data_dir – path to BIDS-compliant dataset with task events
-  $SCRATCH/temple/rawdata2
+  `$SCRATCH/temple/rawdata2`
 *	fmriprep_dir
-  $SCRATCH/temple/rawdata2/derivatives/fmriprep-20.2.1/fmriprep/
+  `$SCRATCH/temple/rawdata2/derivatives/fmriprep-20.2.1/fmriprep/`
 *	out_dir
-  $SCRATCH/temple/output
+  `$SCRATCH/temple/output`
 *	subject
-  temple019
+  `temple019`
 *	task
-  arrow
+  `arrow`
 *	run
-  1
+  `1`
 *	space
-  MNI152NLin2009cAsym
+ `MNI152NLin2009cAsym`
 *	mask_name
-  GM
+  `GM`
 *	mask_file
-  $SCRATCH/temple/rawdata/derivatives/fmriprep-20.2.1/fmriprep/sub-temple019/anat/sub-temple019_space-MNI152NLin2009cAsym_label-GM_probseg.nii.gz
+  `$SCRATCH/temple/rawdata/derivatives/fmriprep-20.2.1/fmriprep/sub-temple019/anat/sub-temple019_space-MNI152NLin2009cAsym_label-GM_probseg.nii.gz`
 *	events_field – column of events file to use to indicate individual explanatory variable
-  object
+  `object`
 
 * [OPTIONS]
 --high-pass FLOAT (highpass filter in Hz)
