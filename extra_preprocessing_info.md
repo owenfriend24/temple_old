@@ -35,25 +35,25 @@ cd /Users/owenfriend/Document/Temple_Local
 betaseries-bids [OPTIONS] data_dir fmriprep_dir out_dir subject task run space mask_name mask_file events_field
 ```
 * data_dir – path to BIDS-compliant dataset with task events
-*   $SCRATCH/temple/rawdata2
+  $SCRATCH/temple/rawdata2
 *	fmriprep_dir
-*	  $SCRATCH/temple/rawdata2/derivatives/fmriprep-20.2.1/fmriprep/
+  $SCRATCH/temple/rawdata2/derivatives/fmriprep-20.2.1/fmriprep/
 *	out_dir
-*	  $SCRATCH/temple/output
+  $SCRATCH/temple/output
 *	subject
-*	  temple019
+  temple019
 *	task
-*	  arrow
+  arrow
 *	run
-*	  1
+  1
 *	space
-*	  MNI152NLin2009cAsym
+  MNI152NLin2009cAsym
 *	mask_name
-*	  GM
+  GM
 *	mask_file
-*	  $SCRATCH/temple/rawdata/derivatives/fmriprep-20.2.1/fmriprep/sub-temple019/anat/sub-temple019_space-MNI152NLin2009cAsym_label-GM_probseg.nii.gz
+  $SCRATCH/temple/rawdata/derivatives/fmriprep-20.2.1/fmriprep/sub-temple019/anat/sub-temple019_space-MNI152NLin2009cAsym_label-GM_probseg.nii.gz
 *	events_field – column of events file to use to indicate individual explanatory variable
-*	  object
+  object
 
 * [OPTIONS]
 --high-pass FLOAT (highpass filter in Hz)
@@ -70,21 +70,21 @@ csf:csf_derivative1:white_matter:white_matter_derivative1:trans_x:trans_x_deriva
 1. DICOM (Digital Imaging and Communications in Medicine)
 *  File format when images are pulled off of scanner
 *  Contains:
-  *   Image data: pixel data of images representing actual visual content such as grayscale or color values that make up the images in binary format
-  * Metadata: information about image and its acquisition (i.e. patient info., scan type, orientation, etc.)
-  *	Extension = .dcm
+    * Image data: pixel data of images representing actual visual content such as grayscale or color values that make up the images in binary format
+    * Metadata: information about image and its acquisition (i.e. patient info., scan type, orientation, etc.)
+    *	Extension = .dcm
 2. NIfTI (Neuroimaging Informatics Technology Initiative)
 *	Stores MRI or fMRI data using three-dimensional arrays of image intensities representing voxel values of brain volume
 *	File structure:
-  * Header containing metadata about image
-  * Actual image data storing voxel intensity values
+    * Header containing metadata about image
+    * Actual image data storing voxel intensity values
 *	Supports extensions allowing for additional info to be stored alongside image data (i.e. ROI’s, anatomical atlases, etc.)
 *	Extension = .nii or .nii.gz when compressed (.gz refers to Gzip file compression)
-  *	Pre-processed images stores as .nii.gz files
+    *	Pre-processed images stores as .nii.gz files
 3. BIDS (Brain Imaging Data Structure)
 *	Folder structure/hierarchy
-  *	Top-level directory contains entire dataset with subdirectories representing different subjects/sessions/runs
-  * File naming convention: each file contains specific elements such as sub ID, session, modality, task info.
-  * Metadata: typically stored in sidecar JSON files accompanying imaging files containing key-value pairs describing acquisition parameters, processing steps, and other important info about imaging data
-    * Essentially arrays/dictionaries with values for important parameters (e.g. SUBID: 001)
-  * Also allows for inclusion of derived data (e.g. processed or analyzed data)
+    *	Top-level directory contains entire dataset with subdirectories representing different subjects/sessions/runs
+    * File naming convention: each file contains specific elements such as sub ID, session, modality, task info.
+    * Metadata: typically stored in sidecar JSON files accompanying imaging files containing key-value pairs describing acquisition parameters, processing steps, and other important info about imaging data
+        * Essentially arrays/dictionaries with values for important parameters (e.g. SUBID: 001)
+    * Also allows for inclusion of derived data (e.g. processed or analyzed data)
