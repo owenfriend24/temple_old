@@ -32,8 +32,11 @@ temple_bids_events.py $WORK/temple/sourcebehav/ $SCRATCH/temple/rawdata2
 slaunch -J template_rois "temple_template_rois.sh /work2/03206/mortonne/frontera/.cache/templateflow/MNI152NLin2009cAsym $SCRATCH/temple/rawdata2/derivatives {}" $BIDIDS -N 1 -n 1 -p development -r 01:00:00
 ```
 * outputs into relevant subject's anat directory
+* need to look into creating ROI specific masks using freesurfer output, currently just putting all into template space with WM/GM/CSF differentiated
+  
+# Imaging Analysis
 
-## 6. Estimate betaseries for given task/run based on unique novel objects (IN PROGRESS)
+## 1. Estimate betaseries for given task/run based on unique novel objects (IN PROGRESS)
 ```
 slaunch -J betaseries "betaseries-bids --high-pass 0.01 --smooth 4 --confound-measures csf:csf_derivative1:white_matter:white_matter_derivative1:trans_x:trans_x_derivative1:trans_y:trans_y_derivative1:trans_z:trans_z_derivative1:rot_x:rot_x_derivative1:rot_y:rot_y_derivative1:rot_z:rot_z_derivative1 $SCRATCH/temple/rawdata/ $SCRATCH/temple/rawdata/derivatives/fmriprep-20.2.1/fmriprep/ $SCRATCH/temple/output/ temple030 arrow 1 MNI152NLin2009cAsym GM $SCRATCH/temple/rawdata/derivatives/fmriprep-20.2.1/fmriprep/sub-temple030/anat/sub-temple030_space-MNI152NLin2009cAsym_label-GM_probseg.nii.gz object” -N 1 -n 1 -r 01:00:00 -p development
 ```
