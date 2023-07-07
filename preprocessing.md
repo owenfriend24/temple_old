@@ -1,6 +1,6 @@
 # Pre-Processing:
 Notes:
-* current cluster commands written below, still in progress
+* current preprocessing commands written below, still work in progress
 * currently set up to work on just one subject at a time (excl. steps 3 and 4)
 * directories somewhat disorganized, will need to fix later but treating $SCRATCH//rawdata2 as current output directory
 * behavioral data in $WORK/temple/sourcebehav/sourcebehav, will need to fix double nesting
