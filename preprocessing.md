@@ -6,6 +6,7 @@ Notes:
 * behavioral data in $WORK/temple/sourcebehav/sourcebehav, will need to fix double nesting
 
 ## 1. Source relevant profile
+* activates virtual environment with relevant packages, sets some paths
 ```
 cd $HOME/analysis/temple
 source .profile_onesubject
