@@ -26,8 +26,12 @@ temple_bids_post.py $SCRATCH/temple/rawdata2
 ```
 temple_bids_events.py $WORK/temple/sourcebehav/ $SCRATCH/temple/rawdata2
 ```
+## 5. Run fmriprep
+```
+slaunch -J fmriprep “temple_fmriprep.sh $SCRATCH/temple/rawdata2 {}" $BIDIDS -N 1 -n 1 -r 08:00:00 -p normal
+```
 
-## 5. Create template space/ROI masks
+## 6. Create template space/ROI masks
 ```
 slaunch -J template_rois "temple_template_rois.sh /work2/03206/mortonne/frontera/.cache/templateflow/MNI152NLin2009cAsym $SCRATCH/temple/rawdata2/derivatives {}" $BIDIDS -N 1 -n 1 -p development -r 01:00:00
 ```
