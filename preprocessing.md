@@ -14,7 +14,7 @@ source .profile_onesubject
 
 ## 2. Convert source DICOM data to BIDS formatting
 ```
-slaunch -J heudiconv "temple_heudiconv.sh {} $WORK/temple/sourcedata $HOME/analysis/temple/bin/temple_heuristic.py $SCRATCH/temple/rawdata2" $SUBIDS -N 1 -n 1 -r 00:30:00 -p development
+slaunch -J heudiconv "temple_heudiconv.sh {} $WORK/temple/sourcedata2 $HOME/analysis/temple/bin/temple_heuristic.py $SCRATCH/temple/rawdata2" $SUBIDS -N 1 -n 1 -r 00:30:00 -p development
 ```
 
 ## 3. Add fieldmap information to BIDS formatted raw data
