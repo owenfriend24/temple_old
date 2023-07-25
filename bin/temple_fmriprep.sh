@@ -13,7 +13,7 @@ subject=$2
 echo " Starting at $(date)"
 start=$(date +%s)
 
-DERIVS_DIR=derivatives/fmriprep-23.0.1
+DERIVS_DIR=derivatives/fmriprep-23.0.2
 
 # Prepare some writeable bind-mount points.
 TEMPLATEFLOW_HOST_HOME=${WORK}/.cache/templateflow
@@ -26,7 +26,7 @@ mkdir -p "${BIDS_DIR}/${DERIVS_DIR}"
 
 # Make sure FS_LICENSE is defined in the container.
 # export SINGULARITYENV_FS_LICENSE=${HOME}/.freesurfer.txt
-export SINGULARITYENV_FS_LICENSE=/work/03206/mortonne/software/apps/freesurfer-7.1.1/license.txt
+export SINGULARITYENV_FS_LICENSE=/work/03206/mortonne/software/apps/freesurfer-6.0.0/license.txt
 
 # Designate a templateflow bind-mount point
 export SINGULARITYENV_TEMPLATEFLOW_HOME=/templateflow
@@ -42,7 +42,7 @@ SINGULARITY_CMD="singularity run \
     -B ${BIDS_DIR}:/data \
     -B ${TEMPLATEFLOW_HOST_HOME}:${SINGULARITYENV_TEMPLATEFLOW_HOME} \
     -B ${WORKDIR}:/workdir \
-    /work/03206/mortonne/software/images/fmriprep-23.0.1.sif"
+    /work/03206/mortonne/software/images/fmriprep-23.0.2.sif"
 
 # Compose the command line
 cmd="${SINGULARITY_CMD} \
