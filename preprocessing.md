@@ -26,6 +26,7 @@ temple_bids_post.py $SCRATCH/temple/rawdata2
 ```
 temple_bids_events.py $WORK/temple/sourcebehav/ $SCRATCH/temple/rawdata2
 ```
+ * not sure why but sub 022 causing problems with behavioral data
 ## 5. Run fmriprep
 ```
 slaunch -J fmriprep “temple_fmriprep.sh $SCRATCH/temple/rawdata2 {}" $BIDIDS -N 1 -n 1 -r 08:00:00 -p normal
