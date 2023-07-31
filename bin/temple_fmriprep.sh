@@ -27,6 +27,7 @@ mkdir -p "${BIDS_DIR}/${DERIVS_DIR}"
 # Make sure FS_LICENSE is defined in the container.
 # export SINGULARITYENV_FS_LICENSE=${HOME}/.freesurfer.txt
 export SINGULARITYENV_FS_LICENSE=/work/03206/mortonne/software/apps/freesurfer-6.0.0/license.txt
+export FS_LICENSE=/work/03206/mortonne/software/apps/freesurfer-6.0.0/license.txt
 
 # Designate a templateflow bind-mount point
 export SINGULARITYENV_TEMPLATEFLOW_HOME=/templateflow
