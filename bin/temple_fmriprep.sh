@@ -29,8 +29,12 @@ mkdir -p "${BIDS_DIR}/${DERIVS_DIR}"
 export SINGULARITYENV_FS_LICENSE=/work/03206/mortonne/software/apps/freesurfer-6.0.0/license.txt
 export FS_LICENSE=/work/03206/mortonne/software/apps/freesurfer-6.0.0/license.txt
 
+export APPTAINERENV_FS_LICENSE=/work/03206/mortonne/software/apps/freesurfer-6.0.0/license.txt
+
+
 # Designate a templateflow bind-mount point
 export SINGULARITYENV_TEMPLATEFLOW_HOME=/templateflow
+export APPTAINERENV_TEMPLATEFLOW_HOME=/templateflow
 
 # Load singularity module (can only be loaded on compute nodes)
 module load tacc-singularity
