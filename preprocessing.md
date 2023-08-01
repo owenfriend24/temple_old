@@ -47,9 +47,9 @@ slaunch -J betaseries "betaseries-bids --high-pass 0.01 --smooth 4 --confound-me
 ```
 for idev
 ```
-betaseries-bids --high-pass 0.01 --smooth 4 --confound-measures csf:csf_derivative1:white_matter:white_matter_derivative1:trans_x:trans_x_derivative1:trans_y:trans_y_derivative1:trans_z:trans_z_derivative1:rot_x:rot_x_derivative1:rot_y:rot_y_derivative1:rot_z:rot_z_derivative1 $SCRATCH/temple/rawdata2/ $SCRATCH/temple/rawdata2/derivatives/fmriprep-23.0.2/ $SCRATCH/temple/output/ temple022 arrow 01 MNI152NLin2009cAsym GM $SCRATCH/temple/rawdata2/derivatives/fmriprep-23.0.2/sub-temple022/anat/sub-temple022_space-MNI152NLin2009cAsym_label-GM_probseg.nii.gz object
+betaseries-bids --high-pass 0.01 --smooth 4 --confound-measures csf:csf_derivative1:white_matter:white_matter_derivative1:trans_x:trans_x_derivative1:trans_y:trans_y_derivative1:trans_z:trans_z_derivative1:rot_x:rot_x_derivative1:rot_y:rot_y_derivative1:rot_z:rot_z_derivative1 $SCRATCH/temple/rawdata3/ $SCRATCH/temple/rawdata3/derivatives/fmriprep-23.0.2/ $SCRATCH/temple/output/ temple024 arrow 01 MNI152NLin2009cAsym GM $SCRATCH/temple/rawdata2/derivatives/fmriprep-23.0.2/sub-temple024/anat/sub-temple024_space-MNI152NLin2009cAsym_label-GM_probseg.nii.gz object
 ```
-* current issue: events files not in rawdata2 directory, not sure what issue is
+* issue with temple022: events files not in rawdata2 directory, not being processed by events script, not sure what issue is
 
 
 
