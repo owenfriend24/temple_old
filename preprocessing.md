@@ -32,7 +32,10 @@ temple_bids_events.py $WORK/temple/sourcebehav/ $SCRATCH/temple/rawdata2
 slaunch -J fmriprep “temple_fmriprep.sh $SCRATCH/temple/rawdata2 {}" $BIDIDS -N 1 -n 1 -r 08:00:00 -p normal
 ```
 
-## 6. Create template space/ROI masks (need to update this with gray_prob)
+## 6. Create gray matter mask (need to update this with gray_prob)
+```
+temple_gray_prob.sh $SCRATCH/temple/rawdata3/derivatives/fmriprep-23.0.2 MNI152NLin2009cAsym $SCRATCH/temple/output
+```
 ```
 slaunch -J template_rois "temple_template_rois.sh /work2/03206/mortonne/frontera/.cache/templateflow/MNI152NLin2009cAsym $SCRATCH/temple/rawdata2/derivatives {}" $BIDIDS -N 1 -n 1 -p development -r 01:00:00
 ```
