@@ -18,7 +18,7 @@ fsleyes &
 
 ## Working between TACC and local machine
 * It's annoying to re-clone github repo in TACC every time I make a change, so I'm making changes on local machine and using CyberDuck to upload
-*   need to chmod 557 on new .py and .sh scripts to let me run them
+*   need to chmod 755 on new .py and .sh scripts to let me run them
 * To pull behavioral data from cluster onto local machine (e.g., to check motion):
 *   From local machine terminal:
 ```
