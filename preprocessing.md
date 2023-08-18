@@ -32,7 +32,7 @@ temple_bids_events.py $WORK/temple/sourcebehav/ $SCRATCH/temple/rawdata2
 slaunch -J fmriprep “temple_fmriprep.sh $SCRATCH/temple/rawdata2 {}" $BIDIDS -N 1 -n 1 -r 08:00:00 -p normal
 ```
 
-## 6. Create gray matter mask (need to update this with gray_prob)
+## 6. Create gray matter mask (need to update gray_prob, currently set for prisma protocol testing)
 ```
 temple_gray_prob.sh $SCRATCH/temple/rawdata3/derivatives/fmriprep-23.0.2 MNI152NLin2009cAsym $SCRATCH/temple/output
 ```
