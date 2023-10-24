@@ -1,3 +1,5 @@
+# need to fix for functional runs on prisma
+
 """Heuristic file for use with heudiconv."""
 import pdb
 
