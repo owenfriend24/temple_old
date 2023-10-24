@@ -1,4 +1,5 @@
 # need to fix for functional runs on prisma
+# try here to get more series info: https://stackoverflow.com/questions/72201164/extracting-specific-data-from-multiple-dicom-files
 
 """Heuristic file for use with heudiconv."""
 import pdb
