@@ -14,8 +14,9 @@ source .profile_onesubject
 
 ## 2. Convert source DICOM data to BIDS formatting
 ```
-slaunch -J heudiconv "temple_heudiconv.sh {} $WORK/temple/sourcedata2 $HOME/analysis/temple/bin/temple_heuristic.py $SCRATCH/temple/rawdata2" $SUBIDS -N 1 -n 1 -r 00:30:00 -p development
+slaunch -J heudiconv "temple_heudiconv.sh {} $WORK/temple/sourcedata2 $HOME/analysis/temple/bin/temple_heuristic_new.py $SCRATCH/temple/rawdata2" $SUBIDS -N 1 -n 1 -r 00:30:00 -p development
 ```
+* new heuristic file needed for prisma
 
 ## 3. Add fieldmap information to BIDS formatted raw data
 ```
@@ -26,7 +27,7 @@ temple_bids_post.py $SCRATCH/temple/rawdata2
 ```
 temple_bids_events.py $WORK/temple/sourcebehav/ $SCRATCH/temple/rawdata2
 ```
- * not sure why but sub 022 causing problems with behavioral data
+ * need to make sure subject number listed in tasks.py
 ## 5. Run fmriprep
 ```
 slaunch -J fmriprep “temple_fmriprep.sh $SCRATCH/temple/rawdata2 {}" $BIDIDS -N 1 -n 1 -r 08:00:00 -p normal
