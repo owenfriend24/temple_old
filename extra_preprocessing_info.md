@@ -88,3 +88,9 @@ csf:csf_derivative1:white_matter:white_matter_derivative1:trans_x:trans_x_deriva
     * Metadata: typically stored in sidecar JSON files accompanying imaging files containing key-value pairs describing acquisition parameters, processing steps, and other important info about imaging data
         * Essentially arrays/dictionaries with values for important parameters (e.g. SUBID: 001)
     * Also allows for inclusion of derived data (e.g. processed or analyzed data)
+* helpful renaming function for local:
+  ```
+  for file in temple055*; do
+mv "$file" "$(echo $file | sed 's/temple055/temple056a/')"
+done
+```
