@@ -91,6 +91,6 @@ csf:csf_derivative1:white_matter:white_matter_derivative1:trans_x:trans_x_deriva
 * helpful renaming function for local:
   ```
   for file in temple055*; do
-mv "$file" "$(echo $file | sed 's/temple055/temple056a/')"
-done
-```
+  mv "$file" "$(echo $file | sed 's/temple055/temple056a/')"
+  done
+  ```
