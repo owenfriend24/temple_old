@@ -20,7 +20,7 @@ slaunch -J heudiconv "temple_heudiconv.sh {} $WORK/temple/sourcedata2 $HOME/anal
 
 ## 3. Add fieldmap information to BIDS formatted raw data
 ```
-temple_bids_post.py $SCRATCH/temple/rawdata2
+temple_bids_post.py $SCRATCH/temple/rawdata2/derivatives/fmriprep-23.0.2
 ```
 
 ## 4. Convert behavioral data into BIDS format within BIDS formatted subject directories
