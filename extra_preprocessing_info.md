@@ -22,8 +22,8 @@ fsleyes &
 * To pull behavioral data from cluster onto local machine (e.g., to check motion):
 *   From local machine terminal:
 ```
-cd /Users/owenfriend/Document/Temple_Local
-./temple_behav_data.sh ofriend@ls6.tacc.utexas.edu:/scratch/09123/ofriend/temple/rawdata /Users/owenfriend/Document/Temple_Local/behav_pull
+cd /Users/owenfriend/Documents/temple_local/analysis
+./temple_behav_data.sh ofriend@ls6.tacc.utexas.edu:/scratch/09123/ofriend/temple/rawdata2/derivatives/fmriprep-23.0.2 /Users/owenfriend/Documents/temple_local/motion_files
 ```
 
 ## using idev
