@@ -39,7 +39,7 @@ cd /Users/owenfriend/Documents/temple_local/analysis
 ```
 
 ## using idev
-* still kind of confused on how it works, but don't need to launch jobs via slurm, gives direct access to development node
+* should check on how often i should be using, need to use either idev or jobs for registration via ants
 
 ## betaseries-bids fields
 * example call, below each bulleted field is working example (not sure if all work)
