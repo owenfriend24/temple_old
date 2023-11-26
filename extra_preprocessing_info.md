@@ -1,4 +1,4 @@
-## Remote desktop via TACC
+## Remote desktop via TACC (only working when on campus right now, not sure why)
 [https://docs.tacc.utexas.edu/hpc/lonestar6/#vis]
 ```
 sbatch /share/doc/slurm/job.dcv2vnc
@@ -15,6 +15,18 @@ fsleyes &
 ```
 * Ctrl + c in terminal to get back to normal TACC after running job commands
 
+## Plotting motion using fmriprep confound files
+* fmriprep outputs some but I don't like their formatting, this script gives better ones including reports of mean, sd, and %/# over threshold for FD and DVARS
+* pull motion files to local machine:
+  ```
+  cd /Users/owenfriend/Documents/temple_local/analysis
+  ./temple_behav_data.sh   ofriend@ls6.tacc.utexas.edu:/scratch/09123/ofriend/temple/rawdata2/derivatives/fmriprep-23.0.2 /Users/owenfriend/Documents/temple_local/motion_files
+  ```
+* plot motion by run for subject
+  ```
+  cd /Users/owenfriend/Documents/temple_local/analysis/temple
+  python plot_motion.py
+  ```
 
 ## Working between TACC and local machine
 * It's annoying to re-clone github repo in TACC every time I make a change, so I'm making changes on local machine and using CyberDuck to upload
