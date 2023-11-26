@@ -28,6 +28,9 @@ temple_bids_post.py $SCRATCH/temple/rawdata2/derivatives/fmriprep-23.0.2
 temple_bids_events.py $WORK/temple/sourcebehav/ $SCRATCH/temple/rawdata2
 ```
  * need to make sure subject number listed in tasks.py
+ * may need to replace nans with 0's for later analyses
+ * don't need to do this before fmriprep, but if you run fmriprep first it will create empty events files (these will be overwritten once you process the behavioral data)
+   
 ## 5. Run fmriprep
 ```
 slaunch -J fmriprep “temple_fmriprep.sh $SCRATCH/temple/rawdata2 {}" $BIDIDS -N 1 -n 1 -r 08:00:00 -p normal
