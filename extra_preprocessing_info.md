@@ -106,3 +106,7 @@ csf:csf_derivative1:white_matter:white_matter_derivative1:trans_x:trans_x_deriva
   mv "$file" "$(echo $file | sed 's/temple055/temple056a/')"
   done
   ```
+* running heudiconv without a heuristic to see scan names:
+  ```
+  heudiconv -d './fix_56/{subject}/*' -s 'sub-temple056a' -f convertall -c none -o ./fix_56/output
+  ```
