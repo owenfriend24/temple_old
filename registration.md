@@ -1,6 +1,5 @@
 # Image Registration:
 Notes:
-* need to clarify what workflow will be/step by step process
 * need to use idev or jobs for ants transformation, too much memory to do in normal tacc terminal
 
 ## Components:
