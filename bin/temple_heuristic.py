@@ -113,7 +113,7 @@ def infotodict(seqinfo):
             # add to either magnitude or phase difference image set
             #pdb.set_trace()
             #print(f'OUTSIDE::{s.series_id}::{n_phase}::{n_fieldmap}::{s.series_files}')
-            if s.series_files > 130:
+            if ("M" in s['ImageType']) or ("PHASE" not in s['ImageType']:
             # if n_fieldmap % 2 == 1:
                 n_magnitude += 1
                 if n_magnitude % 2 == 1:
