@@ -95,15 +95,13 @@ def infotodict(seqinfo):
             n_T2 += 1
             print(f'INSIDE::{s.series_id}::{n_T2}::{s.series_files}')
                 
-                
-
-                
+            
         elif s.series_description == 'fieldmap':
             # fieldmaps to estimate susceptibility distortion
             n_fieldmap += 1
 
-            if s.series_files > 100:
-            # if n_fieldmap % 2 == 1:
+            
+            if n_fieldmap % 2 == 1:
                 n_magnitude += 1
                 if n_magnitude % 2 == 1:
                     print(f'INSIDE::{s.series_id}::{n_magnitude}::{n_fieldmap}::{s.series_files}')
