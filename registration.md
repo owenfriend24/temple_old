@@ -25,6 +25,7 @@ module load ants
 fslmaths {T1w anatomical image path} -mas {gray matter mask} {outpath}
 ```
 * -mas flag defines next input as mask
+  
 example: 
 ```
 fslmaths sub-temple057_dec-preproc_T1w.nii.gz -mas sub-temple057_desc-brain_mask.nii.gz sub-temple057_desc-preproc_T1w_ss.nii.gz
@@ -39,7 +40,8 @@ ANTS 3 -m MI[ {fixed image (space we're registering to)}, {moving image (image w
 * 1,32
   * 1 = bins used in histogram for mutual information calculation, 32 = smoothing factor
   * rigid affine = no scaling or shearing
-  * -i 0 = 0 iterations; no extra iterations needed for optimization since we know what space we're registering to 
+  * -i 0 = 0 iterations; no extra iterations needed for optimization since we know what space we're registering to
+    
 example:
 ```
 ANTS 3 -m MI[ ./func/sub-temple057_task-collector_run-01_space-T1w_boldref.nii.gz, ./anat/sub-temple057_desc-preproc_T1w_ss.nii.gz,1,32] -o ./affines/brain2refvolunwarp_ --rigid-affine true -i 0
