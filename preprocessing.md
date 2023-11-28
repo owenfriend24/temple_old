@@ -14,13 +14,13 @@ source .profile_onesubject
 
 ## 2. Convert source DICOM data to BIDS formatting
 ```
-slaunch -J heudiconv "temple_heudiconv.sh {} $WORK/temple/sourcedata2 $HOME/analysis/temple/bin/temple_heuristic_new.py $SCRATCH/temple/rawdata2" $SUBIDS -N 1 -n 1 -r 00:30:00 -p development
+slaunch -J heudiconv "temple_heudiconv.sh {} $WORK/temple/sourcedata2 $HOME/analysis/temple/bin/temple_heuristic_new2.py $SCRATCH/temple/rawdata2" $SUBIDS -N 1 -n 1 -r 00:30:00 -p development
 ```
 * new heuristic file needed for prisma
 
 ## 3. Add fieldmap information to BIDS formatted raw data
 ```
-temple_bids_post.py $SCRATCH/temple/rawdata2/
+temple_bids_post_new.py $SCRATCH/temple/rawdata2/
 ```
 
 ## 4. Convert behavioral data into BIDS format within BIDS formatted subject directories
