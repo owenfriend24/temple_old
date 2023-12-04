@@ -1,7 +1,7 @@
 ## Remote desktop via TACC (only working when on campus right now, not sure why)
 [https://docs.tacc.utexas.edu/hpc/lonestar6/#vis]
 ```
-sbatch /share/doc/slurm/job.dcv2vnc
+sbatch /share/doc/slurm/job.dcv
 touch dcvserver.out ; tail -f dcvserver.out
 ```
 * job needs to be running before touch command works
