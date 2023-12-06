@@ -5,7 +5,7 @@
   * tested locally, need to test on tacc
   * usage: fix_collector.py {data_dir} {sub}
     * e.g. fix_collector.py $SCRATCH/temple/skyra_prepro/derivatives/fmriprep-23.0.2 024
-      ```
+```
     * (tempenv) login2.ls6(1256)$ for subject in temple016 temple019 temple020 temple022 temple024 temple025 temple029 temple030 temple032 temple033 temple034 temple035 temple036 temple037 temple038 temple041 temple042 temple050 temple051; do
      fix_collector.py $FMDIR $subject
 ```
