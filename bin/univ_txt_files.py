@@ -57,6 +57,7 @@ def main(data_dir, file_type, sub, out_dir):
                 first_items.loc[len(first_items)] = [row['onset'], row['duration'], 1.0]
             out = out_dir + f'/sub-temple{sub}_task-collector_run-{run}_first_items.txt'
             first_items.to_csv(out, sep='\t', header=False, index=False)
+            run +=1
         
             
 if __name__ == "__main__":
