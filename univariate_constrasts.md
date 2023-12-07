@@ -25,11 +25,12 @@ or SUBJECT in temple016 temple019 temple020 temple022 temple024 temple025 temple
 
 ## run loop to run first-level analyses for all these subjects
 * need to make sure all data has been smoothed and skullstripped first
-  * currently the skullstripped subs are 33, 41, 42, 50, 51;
+  * currently the skullstripped subs are 20, 22, 33, 41, 42, 50, 51;
     * of those subjects, 33 is the only one that's smoothed; working on .sh job script right now
 
 
 * next idev:
-    test 41 smooth; then 33 univ
-
+    test 41 smooth; then 33 univ (need to add others to univ_txt_files)
+      if 33 univ works, replace template with 33 univ
   then, skullstrip the rest; while that's running, replace template.fsf, run edit_first_fsf.sh for all subs again
+  
