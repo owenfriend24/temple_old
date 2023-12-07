@@ -25,12 +25,16 @@ or SUBJECT in temple016 temple019 temple020 temple022 temple024 temple025 temple
 
 ## run loop to run first-level analyses for all these subjects
 * need to make sure all data has been smoothed and skullstripped first
-  * currently the skullstripped subs are 20, 22, 33, 41, 42, 50, 51;
-    * of those subjects, 33 is the only one that's smoothed; working on .sh job script right now
+  * all are skullstripped
+    * of those subjects, 24 and 33 the only one that are smoothed; need to submit as job to normal node
 
+smoothing as job 
+```
+launch -J smooth24 "temple_smooth.sh $FMDIR $FSDIR temple051 collector" -N 1 -n 1 -r 00:30:00 -p development
+```
 
 * next idev:
-    test 41 smooth; then 33 univ (need to add others to univ_txt_files)
-      if 33 univ works, replace template with 33 univ
-  then, skullstrip the rest; while that's running, replace template.fsf, run edit_first_fsf.sh for all subs again
+  
+   set up second level for 024 and submit job to first level the rest
+  re-run template command once smoothing is done because we need smoothed functional data to get the dimensions
   
