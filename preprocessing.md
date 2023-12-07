@@ -4,6 +4,7 @@ Notes:
 * currently set up to work on just one subject at a time (excl. steps 3 and 4)
 * directories somewhat disorganized, will need to fix later but treating $SCRATCH//rawdata2 as current output directory
 * behavioral data in $WORK/temple/sourcebehav/sourcebehav, will need to fix double nesting
+* note - slaunch is for multiple subjects at once, just use launch to run a normal job (slaunch for just one sub won't work unless you define it in profile)
 
 ## 1. Source relevant profile
 * activates virtual environment with relevant packages, sets some paths
