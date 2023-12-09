@@ -1,6 +1,7 @@
 # Image Registration:
 Notes:
 * need to use idev or jobs for ants transformation, too much memory to do in normal tacc terminal
+* see prep_func_data.sh and run_first_levels.sh for examples of transformations between three spaces
 
 ## Components:
 * T1w anatomical image path (e.g. sub-temple057_desc-preproc_T1w.nii.gz)
