@@ -95,13 +95,18 @@ def infotodict(seqinfo):
             n_T2 += 1
             print(f'INSIDE::{s.series_id}::{n_T2}::{s.series_files}')
                 
-            
-        elif s.series_description == 'fieldmap':
+                
+
+                
+         elif s.series_description == 'fieldmap':
             # fieldmaps to estimate susceptibility distortion
             n_fieldmap += 1
 
-            
-            if n_fieldmap % 2 == 1:
+            # add to either magnitude or phase difference image set
+            #pdb.set_trace()
+            #print(f'OUTSIDE::{s.series_id}::{n_phase}::{n_fieldmap}::{s.series_files}')
+            if ("M" in s['ImageType']) or ("PHASE" not in s['ImageType']:
+            # if n_fieldmap % 2 == 1:
                 n_magnitude += 1
                 if n_magnitude % 2 == 1:
                     print(f'INSIDE::{s.series_id}::{n_magnitude}::{n_fieldmap}::{s.series_files}')

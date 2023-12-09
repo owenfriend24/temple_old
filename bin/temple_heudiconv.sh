@@ -44,7 +44,6 @@ else
         -b \
         -o "$bids_dir" \
         --minmeta \
-        # for skyra, below line needs to be --files "$subj_raw_dir"/*/*.* \
         --files "$subj_raw_dir"/*.* \
         --overwrite 
 

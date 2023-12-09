@@ -13,7 +13,7 @@ subject=$2
 echo " Starting at $(date)"
 start=$(date +%s)
 
-DERIVS_DIR=derivatives/fmriprep-23.0.2
+DERIVS_DIR=derivatives/fmriprep
 
 # Prepare some writeable bind-mount points.
 TEMPLATEFLOW_HOST_HOME=${WORK}/.cache/templateflow
@@ -27,14 +27,9 @@ mkdir -p "${BIDS_DIR}/${DERIVS_DIR}"
 # Make sure FS_LICENSE is defined in the container.
 # export SINGULARITYENV_FS_LICENSE=${HOME}/.freesurfer.txt
 export SINGULARITYENV_FS_LICENSE=/work/03206/mortonne/software/apps/freesurfer-6.0.0/license.txt
-export FS_LICENSE=/work/03206/mortonne/software/apps/freesurfer-6.0.0/license.txt
-
-export APPTAINERENV_FS_LICENSE=/work/03206/mortonne/software/apps/freesurfer-6.0.0/license.txt
-
 
 # Designate a templateflow bind-mount point
 export SINGULARITYENV_TEMPLATEFLOW_HOME=/templateflow
-export APPTAINERENV_TEMPLATEFLOW_HOME=/templateflow
 
 # Load singularity module (can only be loaded on compute nodes)
 module load tacc-singularity
@@ -100,5 +95,6 @@ echo " "
 finish=$(date +%s)
 printf "Job duration: %02d:%02d:%02d (%d s)
 " $(((finish-start)/3600)) $(((finish-start)%3600/60)) $(((finish-start)%60)) $((finish-start))
+
 
 exit "$exitcode"

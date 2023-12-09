@@ -28,7 +28,7 @@ for subject in ${subjects}; do
   
   
     # need to fix this to reflect temple scans  
-    seg="${prepdir}/${subject}/func/${subject}_task-localizer_run-1_space-${space}_desc-aparcaseg_dseg"
+    seg="${prepdir}/${subject}/func/${subject}_task-M615_run-1_space-${space}_desc-aparcaseg_dseg"
     
     imcp "${seg}" parcels
 

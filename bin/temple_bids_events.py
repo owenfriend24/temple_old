@@ -52,8 +52,8 @@ def main(study_dir, bids_dir, mat=True):
     subjects = tasks.get_subj_list()
     keys = [
         "onset",
-        "duration",
         "trial",
+        "duration",
         "object",
         "position",
         "triad",
@@ -77,9 +77,9 @@ def main(study_dir, bids_dir, mat=True):
 
     # collector
     keys = [
+        "trial",
         "onset",
         "duration",
-         "trial",
         "object",
         "position",
         "triad",
