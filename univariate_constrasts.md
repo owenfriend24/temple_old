@@ -1,40 +1,20 @@
 # Univariate Contrasts
 
-## for benchmarks - differences in boundary items between run 4 and run 1
-
-### behavioral data - can run these .py scripts directly in the terminal, pretty small and don't need to be submitted as jobs
-* collector outputted with temple_bids_events isn't formatted right, need to run fix_collector.py
-  * tested locally, need to test on tacc
-  * usage: fix_collector.py {data_dir} {sub}
-    * e.g. fix_collector.py $SCRATCH/temple/skyra_prepro/derivatives/fmriprep-23.0.2 024
+### for benchmarks - comparing activity at boundary at end of learning to beginning
+* first-level; 3rd item in a triplet compared to 1st item
+* second-level; 4th run vs. 1st run
+1. format behavioral data and motion confounds for feat
+   * file_type can be collector, motion, or both
 ```
-    * (tempenv) login2.ls6(1256)$ for subject in temple016 temple019 temple020 temple022 temple024 temple025 temple029 temple030 temple032 temple033 temple034 temple035 temple036 temple037 temple038 temple041 temple042 temple050 temple051; do
-     fix_collector.py $FMDIR $subject
-done
+univ_txt_files.py fmriprep_dir file_type subject out_dir
+univ_txt_files.py $FMDIR collector temple024 $FMDIR/sub-temple024/univ
 ```
-      
-* reformat collector output and motion confounds to .txt files with univ_text_files.py
-  * tested locally, need to test on tacc
-  * usage: univ_text_files.py {data_dir {type} {sub} {out_dir}
-    * e.g. univ_text_files.py $SCRATCH/temple/skyra_prepro/derivatives/fmriprep-23.0.2 motion 024 $SCRATCH/temple/skyra_prepro-derivatives/fmriprep-23.0.2/sub-temple024/univ
-     * need to run for 16 and 19 once succesfully processed
+2. create first level .fsf files based on template
 ```
-or SUBJECT in temple016 temple019 temple020 temple022 temple024 temple025 temple029 temple030 temple032 temple033 temple034 temple035 temple036 temple037 temple038 temple041 temple042 temple050 temple051; do     univ_txt_files.py "$FMDIR" collector "$SUBJECT" "$FMDIR/sub-$SUBJECT/univ/"; done
+edit_first_fsf.sh template out_path subject fmriprep_dir
+edit_first_fsf.sh $HOME/analysis/temple/univ/new_template.fsf $FMDIR/sub-temple024/univ/ temple024 $FMDIR
 ```
-    * e.g. univ_text_files.py $SCRATCH/temple/skyra_prepro/derivatives/fmriprep-23.0.2 collector temple024 $SCRATCH/temple/skyra_prepro-derivatives/fmriprep-23.0.2/sub-temple024/univ
-
-## run loop to run first-level analyses for all these subjects
-* need to make sure all data has been smoothed and skullstripped first
-  * all are skullstripped
-    * of those subjects, 24 and 33 the only one that are smoothed; need to submit as job to normal node
-
-smoothing as job 
+3. run first level univariate analyses, save to native directory and transform output to MNI space for second level
 ```
-launch -J smooth24 "temple_smooth.sh $FMDIR $FSDIR temple051 collector" -N 1 -n 1 -r 00:30:00 -p development
+run_first_levels.sh fmriprep_dir subject
 ```
-
-* next idev:
-  
-   set up second level for 024 and submit job to first level the rest
-  re-run template command once smoothing is done because we need smoothed functional data to get the dimensions
-  
