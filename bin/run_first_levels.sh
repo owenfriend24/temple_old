@@ -12,7 +12,7 @@ fmriprep_dir=$1
 subject=$2
 
 
-for run in 2 3; do
+for run in 1 2 3 4; do
     echo "running first level analysis for sub ${subject}..."
     feat "${fmriprep_dir}/sub-${subject}/univ/sub-${subject}-first_level_run-0${run}.fsf"
     chmod 775 -R "${fmriprep_dir}/sub-${subject}/transforms"
@@ -27,19 +27,19 @@ for run in 2 3; do
     # cope images
     echo "transforming cope images"
     for cope in ${fmriprep_dir}/sub-${subject}/univ/"out_run${run}.feat"/stats/cope*; do
-    antsApplyTransforms -d 3 -i "${cope}" -o "${cope}" -n BSpline -r /corral-repl/utexas/prestonlab/xmaze/batch/templates/MNI152_T1_1mm_brain.nii.gz -t "/scratch/09123/ofriend/temple/skyra_prepro/derivatives/fmriprep/sub-temple024/transforms/native_to_MNI_Warp.nii.gz" -t "/scratch/09123/ofriend/temple/skyra_prepro/derivatives/fmriprep/sub-temple024/transforms/native_to_MNI_Affine.txt" -t "/scratch/09123/ofriend/temple/skyra_prepro/derivatives/fmriprep/sub-temple024/transforms/mask_to_func_ref_Affine.txt"
+    antsApplyTransforms -d 3 -i "${cope}" -o "${cope}" -n BSpline -r /corral-repl/utexas/prestonlab/xmaze/batch/templates/MNI152_T1_1mm_brain.nii.gz -t "${fmriprep_dir}/sub-${subject}/transforms/native_to_MNI_Warp.nii.gz" -t "${fmriprep_dir}/sub-${subject}/transforms/native_to_MNI_Affine.txt" -t "${fmriprep_dir}/sub-${subject}/transforms/mask_to_func_ref_Affine.txt"
     done
     
     # func data
     echo "transforming func data"
     for func in "${fmriprep_dir}/sub-${subject}/univ/out_run${run}.feat/example_func.nii.gz" "${fmriprep_dir}/sub-${subject}/univ/out_run${run}.feat/mean_func.nii.gz"; do
-    antsApplyTransforms -d 3 -i "${func}" -o "${func}" -n BSpline -r /corral-repl/utexas/prestonlab/xmaze/batch/templates/MNI152_T1_1mm_brain.nii.gz -t "/scratch/09123/ofriend/temple/skyra_prepro/derivatives/fmriprep/sub-temple024/transforms/native_to_MNI_Warp.nii.gz" -t "/scratch/09123/ofriend/temple/skyra_prepro/derivatives/fmriprep/sub-temple024/transforms/native_to_MNI_Affine.txt" -t "/scratch/09123/ofriend/temple/skyra_prepro/derivatives/fmriprep/sub-temple024/transforms/mask_to_func_ref_Affine.txt"
+    antsApplyTransforms -d 3 -i "${func}" -o "${func}" -n BSpline -r /corral-repl/utexas/prestonlab/xmaze/batch/templates/MNI152_T1_1mm_brain.nii.gz -t "${fmriprep_dir}/sub-${subject}/transforms/native_to_MNI_Warp.nii.gz" -t "${fmriprep_dir}/sub-${subject}/transforms/native_to_MNI_Affine.txt" -t "${fmriprep_dir}/sub-${subject}/transforms/mask_to_func_ref_Affine.txt"
     done
 
 
     # mask
     echo "transforming mask"
-    antsApplyTransforms -d 3 -i "${fmriprep_dir}/sub-${subject}/univ/out_run${run}.feat/mask.nii.gz" -o "${fmriprep_dir}/sub-${subject}/univ/out_run${run}.feat/mask.nii.gz" -n NearestNeighbor -r /corral-repl/utexas/prestonlab/xmaze/batch/templates/MNI152_T1_1mm_brain.nii.gz -t "/scratch/09123/ofriend/temple/skyra_prepro/derivatives/fmriprep/sub-temple024/transforms/native_to_MNI_Warp.nii.gz" -t "/scratch/09123/ofriend/temple/skyra_prepro/derivatives/fmriprep/sub-temple024/transforms/native_to_MNI_Affine.txt" -t "/scratch/09123/ofriend/temple/skyra_prepro/derivatives/fmriprep/sub-temple024/transforms/mask_to_func_ref_Affine.txt"
+    antsApplyTransforms -d 3 -i "${fmriprep_dir}/sub-${subject}/univ/out_run${run}.feat/mask.nii.gz" -o "${fmriprep_dir}/sub-${subject}/univ/out_run${run}.feat/mask.nii.gz" -n NearestNeighbor -r /corral-repl/utexas/prestonlab/xmaze/batch/templates/MNI152_T1_1mm_brain.nii.gz -t "${fmriprep_dir}/sub-${subject}/transforms/native_to_MNI_Warp.nii.gz" -t "${fmriprep_dir}/sub-${subject}/transforms/native_to_MNI_Affine.txt" -t "${fmriprep_dir}/sub-${subject}/transforms/mask_to_func_ref_Affine.txt"
     
     echo "formatting reg folder"
     # set up reg folder
