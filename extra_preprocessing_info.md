@@ -1,5 +1,4 @@
-## Remote desktop via TACC (only working when on campus right now, not sure why)
-[https://docs.tacc.utexas.edu/hpc/lonestar6/#vis]
+## Remote desktop via TACC
 ```
 sbatch /share/doc/slurm/job.dcv
 touch dcvserver.out ; tail -f dcvserver.out
