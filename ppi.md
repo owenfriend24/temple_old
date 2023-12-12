@@ -11,3 +11,7 @@ template = ppi_first_template.fsf
 ``` 
 edit_first_fsf.sh template out_path subject fmriprep_dir
 ```
+
+'''
+run_first_ppis.sh fmriprep_dir subject
+```
