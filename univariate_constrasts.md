@@ -22,3 +22,7 @@ run_first_levels.sh fmriprep_dir subject
 ```
 edit_second_fsf.sh template out_path subject fmriprep_dir
 ```
+5. run second level analyses
+```
+run_second_levels.sh fmriprep_dir subject
+```
