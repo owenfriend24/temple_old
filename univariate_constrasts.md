@@ -26,3 +26,4 @@ edit_second_fsf.sh template out_path subject fmriprep_dir
 ```
 run_second_levels.sh fmriprep_dir subject
 ```
+6. create thir level .fsf file based on group level template
