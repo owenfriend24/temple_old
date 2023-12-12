@@ -18,3 +18,7 @@ edit_first_fsf.sh $HOME/analysis/temple/univ/new_template.fsf $FMDIR/sub-temple0
 ```
 run_first_levels.sh fmriprep_dir subject
 ```
+4. create second level .fsf files based on template
+```
+edit_second_fsf.sh template out_path subject fmriprep_dir
+```
