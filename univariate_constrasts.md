@@ -9,7 +9,7 @@
 univ_txt_files.py fmriprep_dir file_type subject out_dir
 univ_txt_files.py $FMDIR collector temple024 $FMDIR/sub-temple024/univ
 ```
-2. create first level .fsf files based on template
+2. create first level .fsf files based on template - make sure to edit for whether referencing ppi or univariate python file for editing (edit_first_ppi.py or edit_first_uni.py)
 ```
 edit_first_fsf.sh template out_path subject fmriprep_dir
 edit_first_fsf.sh $HOME/analysis/temple/univ/new_template.fsf $FMDIR/sub-temple024/univ/ temple024 $FMDIR
@@ -18,7 +18,7 @@ edit_first_fsf.sh $HOME/analysis/temple/univ/new_template.fsf $FMDIR/sub-temple0
 ```
 run_first_levels.sh fmriprep_dir subject
 ```
-4. create second level .fsf files based on template
+4. create second level .fsf files based on template - make sure to edit for whether referencing ppi or univariate python file for editing
 ```
 edit_second_fsf.sh template out_path subject fmriprep_dir
 ```
@@ -26,4 +26,4 @@ edit_second_fsf.sh template out_path subject fmriprep_dir
 ```
 run_second_levels.sh fmriprep_dir subject
 ```
-6. create thir level .fsf file based on group level template
+6. create third level .fsf file based on group level template
