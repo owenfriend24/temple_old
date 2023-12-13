@@ -15,3 +15,8 @@ edit_first_fsf.sh template out_path subject fmriprep_dir
 ```
 run_first_ppi.sh fmriprep_dir subject
 ```
+
+level 2 template = 2nd_level_ppi_template.fsf
+```
+edit_second_fsf.sh template out_path subject fmriprep_dir
+```
