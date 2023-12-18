@@ -24,6 +24,8 @@ edit_second_uni.sh template out_path subject fmriprep_dir
 ```
 5. run second level analyses
 ```
-run_second_ppis.sh fmriprep_dir subject
+run_second_unis.sh fmriprep_dir subject
 ```
-6. create third level .fsf file based on group level template
+6. run third level analysis to average across subjects
+```
+run_third_feat.sh fmriprep_dir uni
