@@ -30,9 +30,7 @@ def main(data_dir, file_type, sub, out_dir):
             out = (out_dir + f'sub-{sub}_task-collector_run-0{run}_formatted_confounds.txt')
             u_conf.to_csv(out, sep='\t', header=False, index=False)
             run += 1
-            
-            
-        
+    
     
     if file_type == 'collector' or file_type == 'both':
         c1 = pd.read_table(func_dir + f'sub-{sub}_task-collector_run-01_events_fixed.tsv')
@@ -42,30 +40,48 @@ def main(data_dir, file_type, sub, out_dir):
 
         run = 1
         for col_run in [c1, c2, c3, c4]:
-            # third items in triad
-            third_items = pd.DataFrame(columns = ['onset', 'duration', 'weight'])
-            ref = col_run[col_run['position'] == 3]
-            for index, row in ref.iterrows():
-                third_items.loc[len(third_items)] = [row['onset'], row['duration'], 1.0]
-            out = out_dir + f'/sub-{sub}_task-collector_run-{run}_third_items.txt'
-            third_items.to_csv(out, sep='\t', header=False, index=False)
+            # boundary contrast - where is hippocampus more connected to after boundary
+            contrast = pd.DataFrame(columns = ['onset', 'duration', 'contrast'])
+            for index, row in col_run.iterrows():
+                if row['position'] == 1:
+                    con = 1
+                elif row['position'] == 3:
+                    con = -1
+                else:
+                    con = 0
+                contrast.loc[len(contrast)] = [row['onset'], row['duration'], con]
+            behav_trs = contrast.onset.values.astype('int')
+            out = out_dir + f'sub-{sub}_task-collector_run-0{run}_ppi_contrast.txt'
+            contrast.to_csv(out, sep='\t', header=False, index=False)
             
-            # first items in triad
-            first_items = pd.DataFrame(columns = ['onset', 'duration', 'weight'])
-            ref = col_run[col_run['position'] == 1]
-            for index, row in ref.iterrows():
-                first_items.loc[len(first_items)] = [row['onset'], row['duration'], 1.0]
-            out = out_dir + f'/sub-{sub}_task-collector_run-{run}_first_items.txt'
-            first_items.to_csv(out, sep='\t', header=False, index=False)
             
-            others = pd.DataFrame(columns = ['onset', 'duration', 'weight'])
-            ref = col_run[(col_run['position'] != 1) & (col_run['position'] != 3)]
-            for index, row in ref.iterrows():
-                others.loc[len(others)] = [row['onset'], row['duration'], 1.0]
-            out = out_dir + f'/sub-{sub}_task-collector_run-{run}_others.txt'
-            others.to_csv(out, sep='\t', header=False, index=False)
-            run += 1
-        
+            
+            # inverse - where is hippocampus less connected to after boundary
+            contrast_inv = pd.DataFrame(columns = ['onset', 'duration', 'contrast'])
+            for index, row in col_run.iterrows():
+                if row['position'] == 1:
+                    con = -1
+                elif row['position'] == 3:
+                    con = 1
+                else:
+                    con = 0
+                contrast_inv.loc[len(contrast_inv)] = [row['onset'], row['duration'], con]
+            out = out_dir + f'sub-{sub}_task-collector_run-0{run}_ppi_inverse_contrast.txt'
+            contrast_inv.to_csv(out, sep='\t', header=False, index=False)
+            
+            # task file - 1.0 for times we're interested in, 0.0 for times we're not
+            task = pd.DataFrame(columns = ['onset', 'duration', 'contrast'])
+            for index, row in col_run.iterrows():
+                if row['position'] == 2:
+                    con = 0
+                else:
+                    con = 1
+                task.loc[len(task)] = [row['onset'], row['duration'], con]
+            out = out_dir + f'sub-{sub}_task-collector_run-0{run}_task.txt'
+            task.to_csv(out, sep='\t', header=False, index=False)
+            
+            run+=1
+                
             
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
