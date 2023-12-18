@@ -1,26 +1,24 @@
-### create .txt files for mean activation within hippocampus for each TR
-* starts with creating bilateral hippocampus mask in participant's functional space
+### benchmark analysis - whole hippocampus as seed, test for connectivity differences during boundary trials for early vs. later learning
+
+1. create bilateral hippocampus mask based on freesurfer output, extract eigenvariate value for each TR and format as .txt file
 ```
 ppi_hpc_mean.sh freesurfer_dir fmriprep_dir subject task
 ```
-
+2. create 2 .txt files for participant's behavior, including contrast of interest and trials to include
 ```
-ppi_txt_behav.sh fmriprep_dir both subject out_dir/
+ppi_txt_behav.py fmriprep_dir both subject out_dir/
 ```
-template = ppi_first_template.fsf
+3. create first level .fsf file based on template, run with Feat
 ``` 
-edit_first_fsf.sh template out_path subject fmriprep_dir
-```
-
-```
+edit_first_ppi.sh ppi_first_template.fsf out_path subject fmriprep_dir
 run_first_ppi.sh fmriprep_dir subject
 ```
-
-level 2 template = 2nd_level_ppi_template.fsf
+4. create second level .fsf file based on template, run with Feat
 ```
-edit_second_fsf.sh template out_path subject fmriprep_dir
+edit_second_fsf.sh 2nd_level_ppi_template.fsf out_path subject fmriprep_dir
+run_second_ppis.sh fmriprep_dir subject
 ```
-
+5. run third level ppi to average across subjects
 ```
-for sub in temple016 temple019 temple020 temple022 temple024 temple025 temple029 temple030 temple032 temple033 temple034 temple035 temple036 temple037 temple038 temple041 temple042 temple045 temple050 temple051 temple053 temple056 temple057 temple058; do
+run_third_feat.sh fmriprep_dir ppi
 ```
