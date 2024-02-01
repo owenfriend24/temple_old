@@ -33,3 +33,9 @@ betaseries-bids [OPTIONS] data_dir fmriprep_dir out_dir subject task run space m
 --high-pass FLOAT (highpass filter in Hz)
 --smooth FLOAT (smoothing kernel FWHM)
 --confound-measures TEXT (colon-separated list of confound measures (see below)
+
+example call:
+```
+betaseries-bids --confound-measures $conf $SCRATCH/temple/skyra_prepro/ $FMDIR $FMDIR/beta temple051 arrow 01 T1w gm_func_dilated $FSDIR/sub-temple051/mri/out/brainmask_func_dilated.nii.gz object
+```
+*IMPORTANT - fill NA's with 0's in event files
