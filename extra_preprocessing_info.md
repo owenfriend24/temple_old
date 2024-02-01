@@ -112,3 +112,7 @@ csf:csf_derivative1:white_matter:white_matter_derivative1:trans_x:trans_x_deriva
   ```
   heudiconv -d '../wr_local/{subject}/*' -s 'wr_000' -f convertall -c none -o ./output   
   ```
+### change file end to match bids specification after skullstripping and smoothing ###
+```
+find . -type f -name '*bold_ss_4mm.nii.gz' -exec bash -c 'mv "$1" "${1/bold_ss_4mm/bold}"' _ {} \;
+```
