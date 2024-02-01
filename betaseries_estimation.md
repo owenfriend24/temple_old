@@ -9,23 +9,23 @@ counfound list for fmriprep: csf:csf_derivative1:white_matter:white_matter_deriv
 betaseries-bids [OPTIONS] data_dir fmriprep_dir out_dir subject task run space mask_name mask_file events_field
 ```
 * data_dir – path to BIDS-compliant dataset with task events
-  `$SCRATCH/temple/rawdata2`
+  `$SCRATCH/temple/skyra_prepro`
 *	fmriprep_dir
-  `$SCRATCH/temple/rawdata2/derivatives/fmriprep-20.2.1/fmriprep/`
+  `$SCRATCH/temple/skyra_prepro/derivatives/fmriprep/`
 *	out_dir
-  `$SCRATCH/temple/output`
+  `$SCRATCH/temple/skyra_prepro/beta`
 *	subject
-  `temple019`
+  `temple051`
 *	task
   `arrow`
 *	run
-  `1`
+  `01`
 *	space
- `MNI152NLin2009cAsym`
+ `T1w`
 *	mask_name
-  `GM`
+  `gm_func_dilated`
 *	mask_file
-  `$SCRATCH/temple/rawdata/derivatives/fmriprep-20.2.1/fmriprep/sub-temple019/anat/sub-temple019_space-MNI152NLin2009cAsym_label-GM_probseg.nii.gz`
+  `$FSDIR/sub-temple051/mri/out/brainmask_func_dilated.nii.gz`
 *	events_field – column of events file to use to indicate individual explanatory variable
   `object`
 
