@@ -109,3 +109,6 @@ csf:csf_derivative1:white_matter:white_matter_derivative1:trans_x:trans_x_deriva
   ```
   heudiconv -d './fix_56/{subject}/*' -s 'sub-temple056a' -f convertall -c none -o ./fix_56/output
   ```
+  ```
+  heudiconv -d '../wr_local/{subject}/*' -s 'wr_000' -f convertall -c none -o ./output   
+  ```
