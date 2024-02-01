@@ -20,7 +20,7 @@ def main(data_dir, sub):
     for arr_run in [a1, a2, a3, a4, a5, a6]:
         arr_run = arr_run.fillna(0)  
         out = (func_dir + f'sub-{sub}_task-arrow_run-0{run}_events.tsv')
-        col_run.to_csv(out, sep='\t', index=False)
+        arr_run.to_csv(out, sep='\t', index=False)
         print('fixed run ' + str(run))
         run += 1
 
