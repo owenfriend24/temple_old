@@ -2,7 +2,7 @@
 Notes:
 * current preprocessing commands written below, still work in progress
 * behavioral data in $WORK/temple/sourcebehav/sourcebehav, will need to fix double nesting
-* slaunch is for multiple subjects at once, just use launch to run a normal job (slaunch for just one sub won't work unless you define variable in advance)
+* slaunch is for multiple subjects at once, just use launch to run a normal job (slaunch for just one sub won't work unless you define subject variable in advance)
 
 ## 1. Source relevant profile
 * activates virtual environment with relevant packages, sets some paths
