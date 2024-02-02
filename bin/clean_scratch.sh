@@ -21,14 +21,14 @@ for file in ${func_dir}/*MNI152NL*; do
 done
 
 for file in ${func_dir}/*T1w*.nii.gz; do
-  mv $file ${func_dir}/orig/$file
+  mv $file ${func_dir}/orig/
 done
 
 for file in ${func_dir}/skullstripped_T1/*_ss.nii.gz; do
-  mv $file ${func_dir}/ss_unsmoothed/$file
+  mv $file ${func_dir}/ss_unsmoothed/
 done
 
 for file in ${func_dir}/skullstripped_T1/*_4mm.nii.gz; do
-  mv $file ${func_dir}/$file
+  mv $file ${func_dir}/
 done
 
