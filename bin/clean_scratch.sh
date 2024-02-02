@@ -32,3 +32,6 @@ for file in ${func_dir}/skullstripped_T1/*_4mm.nii.gz; do
   mv $file ${func_dir}/
 done
 
+cd ${func_dir}
+find . -type f -name '*bold_ss_4mm.nii.gz' -exec bash -c 'mv "$1" "${1/bold_ss_4mm/bold}"' _ {} \;
+
