@@ -14,12 +14,12 @@ fsleyes &
 ```
 * Ctrl + c in terminal to get back to normal TACC after running job commands
 
-## Plotting motion using fmriprep confound files - not working, need to fix
+## Plotting motion using fmriprep confound files
 * fmriprep outputs some but I don't like their formatting, this script gives better ones including reports of mean, sd, and %/# over threshold for FD and DVARS
 * pull motion files to local machine:
   ```
-  cd /Users/owenfriend/Documents/temple_local/analysis
-  ./temple_behav_data.sh ofriend@ls6.tacc.utexas.edu:/scratch/09123/ofriend/temple/rawdata2/derivatives/fmriprep-23.0.2 /Users/owenfriend/Documents/temple_local/motion_files
+  cd /Users/owenfriend/Documents/temple_local/motion_files
+  ./pull_behav.sh ofriend@ls6.tacc.utexas.edu:/scratch/09123/ofriend/temple/skyra_prepro/derivatives/fmriprep /Users/owenfriend/Documents/temple_local/motion_files temple037
   ```
 * plot motion by run for subject
   ```
