@@ -18,6 +18,10 @@ def main(data_dir, sub):
 
     run = 1
     for arr_run in [a1, a2, a3, a4, a5, a6]:
+        arr_run = arr_run.rename(columns = {'object':'obj_id'})
+        arr_run.insert(3, 'object', 0, True)
+        for index, row in arr_run.iterrows():
+            arr_run.at[index, 'object'] = (row['triad'] - 1) * 3 + row['position']
         arr_run = arr_run.fillna(0)  
         out = (func_dir + f'sub-{sub}_task-arrow_run-0{run}_events.tsv')
         arr_run.to_csv(out, sep='\t', index=False)
