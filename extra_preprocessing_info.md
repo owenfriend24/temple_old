@@ -23,7 +23,7 @@ fsleyes &
   ```
 * plot motion by run for subject
   ```
-  cd /Users/owenfriend/Documents/temple_local/analysis/temple
+  cd /Users/owenfriend/Documents/temple_local/analysis/behavior/temple
   python plot_motion.py
   ```
 
