@@ -14,7 +14,7 @@ fsleyes &
 ```
 * Ctrl + c in terminal to get back to normal TACC after running job commands
 
-## Plotting motion using fmriprep confound files
+## Plotting motion using fmriprep confound files - not working, need to fix
 * fmriprep outputs some but I don't like their formatting, this script gives better ones including reports of mean, sd, and %/# over threshold for FD and DVARS
 * pull motion files to local machine:
   ```
