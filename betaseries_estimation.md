@@ -18,7 +18,10 @@ clean_scratch.sh <fmriprep_dir> <subject>
 batch_beta.sh <fmriprep_dir> <freesurfer_dir> <out_dir> <subject>
 ```
 
-
+### 5. adding pre and post beta images together
+```
+fslmaths beta1.nii.gz -add beta2.nii.gz -add beta3.nii.gz output_sum.nii.gz
+```
 
 ### betaseries-bids fields
 ```
