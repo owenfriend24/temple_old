@@ -19,7 +19,7 @@ fsleyes &
 * pull motion files to local machine:
   ```
   cd /Users/owenfriend/Documents/temple_local/motion_files
-  ./pull_behav.sh ofriend@ls6.tacc.utexas.edu:/scratch/09123/ofriend/temple/skyra_prepro/derivatives/fmriprep /Users/owenfriend/Documents/temple_local/motion_files temple037
+  ./pull_behav.sh ofriend@ls6.tacc.utexas.edu:/scratch/09123/ofriend/temple/prisma_prepro/derivatives/fmriprep ./temple060 temple060
   ```
 * plot motion by run for subject
   ```
