@@ -19,20 +19,20 @@ from copy import copy
 
 import numpy as np
 
-subjects = ['temple037']
-masks = ['b_hip_func']
+masks = ['brainmask_func_dilated']
 fsdir = '/scratch/09123/ofriend/temple/skyra_prepro/derivatives/fmriprep/sourcedata/freesurfer'
-fmdir = '/scratch/09123/ofriend/temple/skyra_prepro/derivatives/fmriprep/beta'
+beta_data = '/corral-repl/utexas/prestonlab/temple/beta'
 
-for sub in subjects:
+def main(sub):
     for mask in masks:
         # create full matrix with correlation distance
         rsafx = PDist(square=True)
         runs = ['pre', 'post']
-        rsamask = f'{fsdir}/sub-{sub}/mri/{mask}.nii.gz'
+        rsamask = f'{fsdir}/sub-{sub}/mri/out/{mask}.nii.gz'
         
-        for r in runs:
-            betadir = f'{fmdir}/sub-{sub}/func/sub-{sub}_task-arrow_{r}.nii.gz'  # Assuming the filename construction is correct
+        
+        for r in ['PRE', 'POST]:
+            betadir = f'{beta_data}/sub-{sub}/func/sub-{sub}_task-arrow_space-T1w_mask-gm_func_dilated_{r}_betaseries.nii.gz'
             if not os.path.exists(betadir):
                 print(f"File {betadir} does not exist. Skipping...")
                 continue
@@ -41,5 +41,11 @@ for sub in subjects:
             rs = rsafx(ds)
 
             # save as text file
-            subjoutfile = f"sub-{sub}_{r}_allruns_{mask}.txt"
+            subjoutfile = f'{beta_data}/sub-{sub}/func/sub-{sub}_arrow_{r}_{mask}.txt'
             np.savetxt(subjoutfile, 1 - rs.samples, fmt="%.8f")
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("sub", help="subject number e.g. temple001")
+    args = parser.parse_args()
+    main(args.data_dir, args.sub)
