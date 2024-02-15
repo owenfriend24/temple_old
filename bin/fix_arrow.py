@@ -6,6 +6,7 @@ from pathlib import Path
 import pandas as pd
 import os
 import argparse
+import subprocess
 
 def run(command):
     #print(f"Running command: {command}")
