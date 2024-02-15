@@ -15,8 +15,7 @@ from mvpa2.datasets.mri import *
 import os
 import sys
 from copy import copy
-
-
+import subprocess
 import numpy as np
 
 masks = ['brainmask_func_dilated']
@@ -24,6 +23,7 @@ fsdir = '/scratch/09123/ofriend/temple/skyra_prepro/derivatives/fmriprep/sourced
 beta_data = '/corral-repl/utexas/prestonlab/temple/beta'
 
 def main(sub):
+    subprocess.run('mkdir ${beta_data}/sub-{sub}/rdms', shell=True)
     for mask in masks:
         # create full matrix with correlation distance
         rsafx = PDist(square=True)
@@ -41,7 +41,7 @@ def main(sub):
             rs = rsafx(ds)
 
             # save as text file
-            subjoutfile = f'{beta_data}/sub-{sub}/func/sub-{sub}_arrow_{r}_{mask}.txt'
+            subjoutfile = f'{beta_data}/sub-{sub}/rdms/sub-{sub}_arrow_{r}_{mask}.txt'
             np.savetxt(subjoutfile, 1 - rs.samples, fmt="%.8f")
 
 if __name__ == "__main__":
