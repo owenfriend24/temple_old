@@ -23,7 +23,7 @@ fsdir = '/scratch/09123/ofriend/temple/skyra_prepro/derivatives/fmriprep/sourced
 beta_data = '/corral-repl/utexas/prestonlab/temple/beta'
 
 def main(sub):
-    subprocess.run(f'mkdir ${beta_data}/sub-${sub}/rdms', shell=True)
+    subprocess.run(f'mkdir {beta_data}/sub-{sub}/rdms', shell=True)
     for mask in masks:
         # create full matrix with correlation distance
         rsafx = PDist(square=True)
