@@ -8,20 +8,18 @@ import os
 import argparse
 import subprocess
 
+def make_directory(directory):
+    subprocess.run(f'mkdir -p {directory}', shell=True)
 
-
-
-
-def run(command):
-    #print(f"Running command: {command}")
-    subprocess.run(command, shell=True)
+def copy_files(source, destination):
+    subprocess.run(f'cp {source}/*events.tsv {destination}', shell=True)
 
 def main(data_dir, sub):
     func_dir = Path(data_dir) / f'sub-{sub}' / 'func'
     orig_events_dir = func_dir / 'orig_events'
     
-    run(f'mkdir -p {orig_events_dir}')
-    run(f'cp {func_dir}/*events.tsv {orig_events_dir}')
+    make_directory(orig_events_dir)
+    copy_files(func_dir, orig_events_dir)
     
     a1 = pd.read_table(func_dir + f'sub-{sub}_task-arrow_run-01_events.tsv')
     a2 = pd.read_table(func_dir + f'sub-{sub}_task-arrow_run-02_events.tsv')
