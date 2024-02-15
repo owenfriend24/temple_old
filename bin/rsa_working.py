@@ -4,7 +4,7 @@ from mvpa2.misc.fsl.base import *
 from mvpa2.datasets.mri import fmri_dataset
 from mvpa2.measures.rsa import PDist
 
-
+import argparse
 import nibabel
 import scipy.stats
 from scipy.stats.mstats import zscore
@@ -31,7 +31,7 @@ def main(sub):
         rsamask = f'{fsdir}/sub-{sub}/mri/out/{mask}.nii.gz'
         
         
-        for r in ['PRE', 'POST]:
+        for r in ['PRE', 'POST']:
             betadir = f'{beta_data}/sub-{sub}/func/sub-{sub}_task-arrow_space-T1w_mask-gm_func_dilated_{r}_betaseries.nii.gz'
             if not os.path.exists(betadir):
                 print(f"File {betadir} does not exist. Skipping...")
@@ -48,4 +48,4 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("sub", help="subject number e.g. temple001")
     args = parser.parse_args()
-    main(args.data_dir, args.sub)
+    main(args.sub)
