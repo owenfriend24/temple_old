@@ -9,7 +9,6 @@ fm_dir=$1
 fs_dir=$2
 subject=$3
 
-# Activate your virtual environment if you're using one
 source /home1/09123/ofriend/analysis/temple/profile
 
 mkdir /corral-repl/utexas/prestonlab/temple/beta/sub-${subject}
@@ -25,3 +24,14 @@ for run in 1 2 3 4 5 6; do
     echo "Created beta image for run ${run}!"
 done
 
+cd ${out_dir}/func
+
+fslmaths sub-${subject}_task-arrow_run-01_space-T1w_label-gm_func_dilated_betaseries.nii.gz \
+-add sub-${subject}_task-arrow_run-02_space-T1w_label-gm_func_dilated_betaseries.nii.gz \
+-add sub-${subject}_task-arrow_run-03_space-T1w_label-gm_func_dilated_betaseries.nii.gz \
+sub-${subject}_task-arrow_space-T1w_mask-gm_func_dilated_PRE_betaseries.nii.gz
+
+fslmaths sub-${subject}_task-arrow_run-04_space-T1w_label-gm_func_dilated_betaseries.nii.gz \
+-add sub-${subject}_task-arrow_run-05_space-T1w_label-gm_func_dilated_betaseries.nii.gz \
+-add sub-${subject}_task-arrow_run-06_space-T1w_label-gm_func_dilated_betaseries.nii.gz \
+sub-${subject}_task-arrow_space-T1w_mask-gm_func_dilated_PRE_betaseries.nii.gz
