@@ -25,24 +25,26 @@ beta_data = '/corral-repl/utexas/prestonlab/temple/beta'
 def main(sub):
     subprocess.run(f'mkdir {beta_data}/sub-{sub}/rdms', shell=True)
     for mask in masks:
-        # create full matrix with correlation distance
-        rsafx = PDist(square=True)
+        
+        
         runs = ['pre', 'post']
         rsamask = f'{fsdir}/sub-{sub}/mri/out/{mask}.nii.gz'
-        
-        
-        for r in ['PRE', 'POST']:
-            betadir = f'{beta_data}/sub-{sub}/func/sub-{sub}_task-arrow_space-T1w_mask-gm_func_dilated_{r}_betaseries.nii.gz'
-            if not os.path.exists(betadir):
-                print(f"File {betadir} does not exist. Skipping...")
-                continue
-            
-            ds = fmri_dataset(betadir, mask=rsamask)
-            rs = rsafx(ds)
 
-            # save as text file
-            subjoutfile = f'{beta_data}/sub-{sub}/rdms/sub-{sub}_arrow_{r}_{mask}.txt'
-            np.savetxt(subjoutfile, 1 - rs.samples, fmt="%.8f")
+        pre_beta =  f'{beta_data}/sub-{sub}/func/sub-{sub}_task-arrow_space-T1w_mask-gm_func_dilated_PRE_betaseries.nii.gz'
+        post_beta =  f'{beta_data}/sub-{sub}/func/sub-{sub}_task-arrow_space-T1w_mask-gm_func_dilated_POST_betaseries.nii.gz'
+    
+        if not os.path.exists(betadir):
+            print(f"File {betadir} does not exist. Skipping...")
+            continue
+
+        pre_ds = fmri_dataset(pre_beta, mask=rsamask)
+        post_ds  = fmri_dataset(post_beta, mask=rsamask)
+
+        rs = pdist(np.vstack([pre_ds.samples, post_ds.samples]), metric='correlation')
+
+        # save as text file
+        subjoutfile = f'{beta_data}/sub-{sub}/rdms/sub-{sub}_arrow_PREPOST_{mask}.txt'
+        np.savetxt(subjoutfile,squareform(1-rs), fmt="%.8f")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
