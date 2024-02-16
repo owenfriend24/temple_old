@@ -34,4 +34,4 @@ sub-${subject}_task-arrow_space-T1w_mask-gm_func_dilated_PRE_betaseries.nii.gz
 fslmaths sub-${subject}_task-arrow_run-04_space-T1w_label-gm_func_dilated_betaseries.nii.gz \
 -add sub-${subject}_task-arrow_run-05_space-T1w_label-gm_func_dilated_betaseries.nii.gz \
 -add sub-${subject}_task-arrow_run-06_space-T1w_label-gm_func_dilated_betaseries.nii.gz \
-sub-${subject}_task-arrow_space-T1w_mask-gm_func_dilated_PRE_betaseries.nii.gz
+sub-${subject}_task-arrow_space-T1w_mask-gm_func_dilated_POST_betaseries.nii.gz
