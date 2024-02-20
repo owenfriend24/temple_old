@@ -123,7 +123,7 @@ def extract_func(fs_dir, fmriprep_dir, sub, task, num_runs):
         run(f'fslmaths {func_dir}/sub-{sub}_task-{task}_run-0{func_run}_space-T1w_desc-preproc_bold.nii.gz -mas {mask_func}_dilated.nii.gz {func_dir}/skullstripped_T1/sub-{sub}_task-{task}_run-0{func_run}_space-T1w_desc-preproc_bold_ss.nii.gz')
         print(f'skullstripped run {func_run}')
 
-  #     fslmaths /scratch/09123/ofriend/temple/skyra_prepro/derivatives/fmriprep/sub-temple029/func/sub-temple029_task-collector_run-01_space-T1w_desc-preproc_bold.nii.gz -mas /scratch/09123/ofriend/temple/skyra_prepro/derivatives/fmriprep/sourcedata/freesurfer/sub-temple029/mri/out/brainmask_func_dilated.nii.gz /scratch/09123/ofriend/temple/skyra_prepro/derivatives/fmriprep/sub-temple029/func/skullstripped_T1/workplz.nii.gz
+ 
         
 # Function to smooth functional data with a 4.0 FWHM kernel
 def smooth_func(fs_dir, fmriprep_dir, sub, task, num_runs):
