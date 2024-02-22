@@ -36,7 +36,7 @@ fix_collector.py fmriprep_dir subject
    
 ## 5. Run fmriprep
 ```
-slaunch -J fmriprep “temple_fmriprep.sh $SCRATCH/temple/rawdata2 {}" $BIDIDS -N 1 -n 1 -r 08:00:00 -p normal
+slaunch -J fmriprep “temple_fmriprep.sh $SCRATCH/temple/prisma_prepro {}" $BIDIDS -N 1 -n 1 -r 08:00:00 -p normal
 ```
 
 ## 6. Create mask based on freesurfer parcellations and skullstrip functional runs
