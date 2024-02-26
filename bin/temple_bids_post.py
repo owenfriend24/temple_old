@@ -109,33 +109,31 @@ def main(data_dir):
         with open(json_file.path, 'w') as f:
             json.dump(prop, f, indent=4)
 
-    # add IntendedFor field to fieldmaps
-    skyra_subjects = ['temple016', 'temple019', 'temple020', 'temple022', 'temple024', 'temple025', 'temple032', 
-                      'temple033', 'temple034', 'temple035', 'temple036', 'temple037', 'temple038', 'temple041', 
-                      'temple042', 'temple045', 'temple050', 'temple051', 'temple053]
+   # add IntendedFor field to fieldmaps
     for subject in layout.get_subjects():
-        # skyra subs need to use temple_bids_post_skyra.py
-        if subject not in skyra_subjects:
-            fmappings = get_fieldmap_mapping(data_dir, subject)
-            for fmap_run, func_runs in fmappings.items():
-                func_files = [
-                    f'func/sub-{subject}_{func_run}_bold.nii.gz'
-                    for func_run in func_runs
-                    ]
-                sbref_files = [
-                    f'func/sub-{subject}_{func_run}_sbref.nii.gz'
-                    for func_run in func_runs
-                    ]
-                fmap_files = layout.get(
-                    datatype='fmap', extension='json', subject=subject, run=fmap_run
-                )
-                
-                for fmap_file in fmap_files:
-                    prop = fmap_file.get_dict()
-                    prop['IntendedFor'] = func_files + sbref_files
-                    os.chmod(fmap_file.path, prw)
-                    with open(fmap_file.path, 'w') as f:
-                        json.dump(prop, f, indent=4)
+        fmappings = get_fieldmap_mapping(data_dir, subject)
+        id = 0
+        for fmap_run, func_runs in fmappings.items():
+            func_files = [
+                f'func/sub-{subject}_{func_run}_bold.nii.gz'
+                for func_run in func_runs
+                ]
+            sbref_files = [
+                f'func/sub-{subject}_{func_run}_sbref.nii.gz'
+                for func_run in func_runs
+                ]
+            fmap_files = layout.get(
+                datatype='fmap', extension='json', subject=subject, run=fmap_run
+            )
+            
+            for fmap_file in fmap_files:
+                prop = fmap_file.get_dict()
+                prop['IntendedFor'] = func_files + sbref_files
+                prop['B0FieldIdentifier'] = f'00000{id}'
+                os.chmod(fmap_file.path, prw)
+                with open(fmap_file.path, 'w') as f:
+                    json.dump(prop, f, indent=4)
+            id += 1
 
 
     # sort the participants file
