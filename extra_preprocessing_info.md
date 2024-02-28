@@ -116,3 +116,13 @@ csf:csf_derivative1:white_matter:white_matter_derivative1:trans_x:trans_x_deriva
 ```
 find . -type f -name '*bold_ss_4mm.nii.gz' -exec bash -c 'mv "$1" "${1/bold_ss_4mm/bold}"' _ {} \;
 ```
+
+### setting up singularity image on tacc
+https://www.nipreps.org/apps/singularity/
+https://containers-at-tacc.readthedocs.io/en/latest/singularity/01.singularity_basics.html
+
+```
+idev
+module load tacc-apptainer
+apptainer pull docker://nipreps/fmriprep:23.1.3
+```
