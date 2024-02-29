@@ -17,7 +17,7 @@ def run_com(command):
     #print(f"Running command: {command}")
     subprocess.run(command, shell=True)
             
-def format_motion_data(subs):
+def format_motion_data(subs, base_dir, out_path):
     for sub in subs:
         df = pd.DataFrame(columns = ['sub', 'task', 'run', 'tr', 'dvars', 'fd'])
         for run in range(1, 7, 1):
@@ -51,11 +51,11 @@ def format_motion_data(subs):
                     dvars = data['std_dvars'][index]
                     df.loc[len(df)] = [sub, task, run, tr, dvars, fd]
 
-        df.to_csv(base_dir + 'all_motion.csv')      
+        df.to_csv(out_path + 'all_motion.csv')      
 
-def plot_arrow(subject):
+def plot_arrow(subject, base_dir, out_path):
     sub = subject
-    df = pd.read_csv(base_dir + 'all_motion.csv')
+    df = pd.read_csv(out_path + 'all_motion.csv')
     a_data = df[df['task'] == 'arrow']
     
     run_data = {}  # Dictionary to store run data
@@ -111,9 +111,9 @@ def plot_arrow(subject):
         
         
         
-def plot_collector(subject):
+def plot_collector(subject, base_dir, out_path):
     sub = subject
-    df = pd.read_csv(base_dir + 'all_motion.csv')
+    df = pd.read_csv(out_path + 'all_motion.csv')
     a_data = df[df['task'] == 'collector']
     
     run_data = {}  # Dictionary to store run data
@@ -168,9 +168,9 @@ def plot_collector(subject):
         plt.savefig(out_path + f'{sub}-collector-{measure}.png')
 
         
-def plot_movie(subject):
+def plot_movie(subject, base_dir, out_path):
     sub = subject
-    df = pd.read_csv(base_dir + 'all_motion.csv')
+    df = pd.read_csv(out_path + 'all_motion.csv')
     a_data = df[df['task'] == 'movie']
     
     run_data = {}  # Dictionary to store run data
@@ -226,7 +226,7 @@ def plot_movie(subject):
         
 def main(data_dir, sub):
     base_dir = data_dir + f'sub-{sub}/func'
-    out_dir = data_dir + '/motion_files'
+    out_dir = data_dir + '/motion'
     run_com(f'mkdir {out_dir}/sub-{sub}')
     out_path = out_dir + f'sub-{sub}/'
 
