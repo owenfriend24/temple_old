@@ -47,6 +47,16 @@ fix_collector.py fmriprep_dir subject
    
 ## 5. Run fmriprep
 * runs via Singularity/Apptainer image in $WORK; currently testing to make sure it works. Still points to Neal's freesurfer license I believe
+* temple_fmriprep.sh includes command line that specifies some parameters including:
+   * participant label - passed in with job launch; temple_### denotes raw data, temple### denotes data converted to BIDS (BIDS does not allow underscores)
+   * std. dvars threshold = 1.5
+   * framewise displacement threshold = 0.5
+   * high-pass filter = 128
+   * output spaces = MNI
+   * omp-nthreads = 12
+   * num_threads = 18
+   * mem_mb = 60000
+   * skip_bids_validation (make sure BIDS compliant when running heudiconv)
 ```
 slaunch -J fmriprep “temple_fmriprep.sh $SCRATCH/temple/prisma_prepro {}" $BIDIDS -N 1 -n 1 -r 08:00:00 -p normal
 ```
