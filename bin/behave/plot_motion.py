@@ -7,17 +7,19 @@ from matplotlib.ticker import MultipleLocator
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
+import argparse
 
-base_dir = Path("/Users/owenfriend/Documents/temple_local/motion_files")
-out_path = Path("/Users/owenfriend/Documents/temple_local/motion_files/plots")
 
+def run(command):
+    #print(f"Running command: {command}")
+    subprocess.run(command, shell=True)
             
 def format_motion_data(subs):
     for sub in subs:
         df = pd.DataFrame(columns = ['sub', 'task', 'run', 'tr', 'dvars', 'fd'])
         for run in range(1, 7, 1):
             task = 'arrow'
-            file_path = (base_dir/f'sub-temple{sub}/func/sub-temple{sub}_task-{task}_run-0{run}_desc-confounds_timeseries.tsv')
+            file_path = (base_dir + f'sub-temple{sub}/func/sub-temple{sub}_task-{task}_run-0{run}_desc-confounds_timeseries.tsv')
             if os.path.exists(file_path):
                 data = pd.read_table(file_path)
                 for index, row in data.iterrows():
@@ -27,7 +29,7 @@ def format_motion_data(subs):
                     df.loc[len(df)] = [sub, task, run, tr, dvars, fd]
         for run in range(1, 5, 1):
             task = 'collector'
-            file_path = (base_dir/f'sub-temple{sub}/func/sub-temple{sub}_task-{task}_run-0{run}_desc-confounds_timeseries.tsv')
+            file_path = (base_dir + f'sub-temple{sub}/func/sub-temple{sub}_task-{task}_run-0{run}_desc-confounds_timeseries.tsv')
             if os.path.exists(file_path):
                 data = pd.read_table(file_path)
                 for index, row in data.iterrows():
@@ -37,7 +39,7 @@ def format_motion_data(subs):
                     df.loc[len(df)] = [sub, task, run, tr, dvars, fd]
         for run in range(1, 3, 1):
             task = 'movie'
-            file_path = (base_dir/f'sub-temple{sub}/func/sub-temple{sub}_task-{task}_run-0{run}_desc-confounds_timeseries.tsv')
+            file_path = (base_dir + f'sub-temple{sub}/func/sub-temple{sub}_task-{task}_run-0{run}_desc-confounds_timeseries.tsv')
             if os.path.exists(file_path):
                 data = pd.read_table(file_path)
                 for index, row in data.iterrows():
@@ -46,12 +48,11 @@ def format_motion_data(subs):
                     dvars = data['std_dvars'][index]
                     df.loc[len(df)] = [sub, task, run, tr, dvars, fd]
 
-        df.to_csv(base_dir/f'sub-temple{sub}/all_motion.csv')
-        os.makedirs(out_path/f'sub-temple{sub}', exist_ok = True)
+        df.to_csv(base_dir + 'all_motion.csv')      
 
 def plot_arrow(subject):
     sub = subject
-    df = pd.read_csv(base_dir / f'sub-temple{sub}/all_motion.csv')
+    df = pd.read_csv(base_dir + 'all_motion.csv')
     a_data = df[df['task'] == 'arrow']
     
     run_data = {}  # Dictionary to store run data
@@ -103,13 +104,13 @@ def plot_arrow(subject):
         # Save the plot
         plt.tight_layout()
         plt.grid(True)
-        plt.savefig(out_path/f'sub-temple{sub}/{sub}-arrow-{measure}.png')
+        plt.savefig(out_path + f'{sub}-arrow-{measure}.png')
         
         
         
 def plot_collector(subject):
     sub = subject
-    df = pd.read_csv(base_dir / f'sub-temple{sub}/all_motion.csv')
+    df = pd.read_csv(base_dir + 'all_motion.csv')
     a_data = df[df['task'] == 'collector']
     
     run_data = {}  # Dictionary to store run data
@@ -161,12 +162,12 @@ def plot_collector(subject):
         # Save the plot
         plt.tight_layout()
         plt.grid(True)
-        plt.savefig(out_path/f'sub-temple{sub}/{sub}-collector-{measure}.png')
+        plt.savefig(out_path + f'{sub}-collector-{measure}.png')
 
         
 def plot_movie(subject):
     sub = subject
-    df = pd.read_csv(base_dir / f'sub-temple{sub}/all_motion.csv')
+    df = pd.read_csv(base_dir + 'all_motion.csv')
     a_data = df[df['task'] == 'movie']
     
     run_data = {}  # Dictionary to store run data
@@ -218,25 +219,24 @@ def plot_movie(subject):
         # Save the plot
         plt.tight_layout()
         plt.grid(True)
-        plt.savefig(out_path/f'sub-temple{sub}/{sub}-movie-{measure}.png')
+        plt.savefig(out_path + f'{sub}-movie-{measure}.png')
         
-        
+def main(data_dir, sub):
+    base_dir = data_dir + f'sub-{sub}/func'
+    out_dir = data_dir + 'motion_files'
+    run(f'mkdir {out_dir}/sub-{sub}')
+    out_path = out_dir + f'sub-{sub}/
 
-subs = []
-done_enter = False
-while not done_enter:
-    p = input('Enter participant # one at a time; when done enter \'done\': ')
-    if str(p) == 'done':
-        done_enter = True
-    else:  
-        subs.append(str(p))
-format_motion_data(subs)
-for subject in subs:
-    print(f'plotting {subject} arrow runs...')
-    plot_arrow(subject)
-    print(f'plotting {subject} collector runs...')
-    plot_collector(subject)
-    print(f'plotting {subject} movie runs...')
-    plot_movie(subject)
+    format_motion_data(sub)
+    plot_arrow(sub)
+    plot_collector(sub)
+    plot_movie(sub)
     print('done')
-        
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("data_dir", help="data directory")
+    parser.add_argument("sub", help="subject number")
+    args = parser.parse_args()
+    main(args.data_dir, args.sub)
