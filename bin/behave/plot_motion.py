@@ -225,7 +225,7 @@ def plot_movie(subject, base_dir, out_path):
         plt.savefig(out_path + f'{sub}-movie-{measure}.png')
         
 def main(data_dir, sub):
-    base_dir = data_dir + f'sub-{sub}/func'
+    base_dir = data_dir + f'/sub-{sub}/func'
     out_dir = data_dir + '/motion/'
     run_com(f'mkdir {out_dir}/sub-{sub}')
     out_path = out_dir + f'sub-{sub}/'
