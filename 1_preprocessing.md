@@ -13,7 +13,7 @@ source profile
 
 ## 2. Convert source DICOM data to BIDS formatting
 ```
-slaunch -J heudiconv "temple_heudiconv.sh {} $WORK/temple/sourcedata2 $HOME/analysis/temple/bin/temple_heuristic.py $SCRATCH/temple/skyra_prepro" $SUBIDS -N 1 -n 1 -r 00:30:00 -p development
+slaunch -J heudiconv "temple_heudiconv.sh {} $WORK/temple/sourcedata2 $HOME/analysis/temple/bin/temple_heuristic.py $SCRATCH/temple/prisma_prepro" $SUBIDS -N 1 -n 1 -r 00:30:00 -p development
 ```
 * new heuristic file needed for prisma
 
@@ -22,7 +22,7 @@ slaunch -J heudiconv "temple_heudiconv.sh {} $WORK/temple/sourcedata2 $HOME/anal
 temple_bids_post.py $SCRATCH/temple/skyra_prepro/
 ```
 
-## 4. Convert behavioral data into BIDS format within BIDS formatted subject directories
+## 4. Convert behavioral data into BIDS format within BIDS formatted subject directories - move this to a separate behavioral markdown file
 ```
 temple_bids_events.py $WORK/temple/sourcebehav/ $SCRATCH/temple/skyra_prepro/
 ```
