@@ -10,6 +10,11 @@ import argparse
 import pandas as pd
 from glob import glob
 from bids import BIDSLayout
+import subprocess
+
+def run_com(command):
+    #print(f"Running command: {command}")
+    subprocess.run(command, shell=True)
 
 # can keep this for now but should test whether any json's have those fields after re-running heudiconv on current subs, i've yet to see one
 def fix_dict(j):
@@ -118,7 +123,7 @@ def main(data_dir):
 
    # add IntendedFor field to fieldmaps
     for subject in layout.get_subjects():
-        
+        run_com(f'echo subject')
         ref = df[df['participant_id'] == subject]
         p_index = ref.index[0]
         if 'post_processed' not in ref.group.values:
