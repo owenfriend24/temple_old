@@ -24,12 +24,9 @@ slaunch -J heudiconv "skyra_heudiconv.sh {} $WORK/temple/sourcedata2 $HOME/analy
 slaunch -J heudiconv "temple_heudiconv.sh {} $WORK/temple/sourcedata2 $HOME/analysis/temple/bin/temple_heuristic.py $SCRATCH/temple/prisma_prepro" $SUBIDS -N 1 -n 1 -r 00:30:00 -p development
 ```
 ## 3. Add fieldmap information to BIDS formatted raw data
-* may need a separate script for skyra ppt's vs. prisma - test when reprocessing
-* SKYRA
-```
-old_temple_bids_post.py $SCRATCH/temple/skyra_prepro
-```
-* PRISMA
+* should not run on subjects that have already been run once it's been run on them once; assigns 'post_processed' to group in participants.tsv (need to test on group)
+* need to figure out whether the .json cleaning is necessary, test on group once group heudiconv goes through
+
 ```
 temple_bids_post.py $SCRATCH/temple/prisma_prepro
 ```  
