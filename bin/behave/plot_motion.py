@@ -17,44 +17,42 @@ def run_com(command):
     #print(f"Running command: {command}")
     subprocess.run(command, shell=True)
             
-def format_motion_data(subs, base_dir, out_path):
-    for sub in subs:
-        df = pd.DataFrame(columns = ['sub', 'task', 'run', 'tr', 'dvars', 'fd'])
-        for run in range(1, 7, 1):
-            task = 'arrow'
-            file_path = (base_dir + f'sub-temple{sub}_task-{task}_run-0{run}_desc-confounds_timeseries.tsv')
-            if os.path.exists(file_path):
-                data = pd.read_table(file_path)
-                for index, row in data.iterrows():
-                    tr = index+1
-                    fd = data['framewise_displacement'][index]
-                    dvars = data['std_dvars'][index]
-                    df.loc[len(df)] = [sub, task, run, tr, dvars, fd]
-        for run in range(1, 5, 1):
-            task = 'collector'
-            file_path = (base_dir + f'sub-temple{sub}_task-{task}_run-0{run}_desc-confounds_timeseries.tsv')
-            if os.path.exists(file_path):
-                data = pd.read_table(file_path)
-                for index, row in data.iterrows():
-                    tr = index+1
-                    fd = data['framewise_displacement'][index]
-                    dvars = data['std_dvars'][index]
-                    df.loc[len(df)] = [sub, task, run, tr, dvars, fd]
-        for run in range(1, 3, 1):
-            task = 'movie'
-            file_path = (base_dir + f'sub-temple{sub}_task-{task}_run-0{run}_desc-confounds_timeseries.tsv')
-            if os.path.exists(file_path):
-                data = pd.read_table(file_path)
-                for index, row in data.iterrows():
-                    tr = index+1
-                    fd = data['framewise_displacement'][index]
-                    dvars = data['std_dvars'][index]
-                    df.loc[len(df)] = [sub, task, run, tr, dvars, fd]
+def format_motion_data(sub, base_dir, out_path):
+    df = pd.DataFrame(columns = ['sub', 'task', 'run', 'tr', 'dvars', 'fd'])
+    for run in range(1, 7, 1):
+        task = 'arrow'
+        file_path = (base_dir + f'sub-temple{sub}_task-{task}_run-0{run}_desc-confounds_timeseries.tsv')
+        if os.path.exists(file_path):
+            data = pd.read_table(file_path)
+            for index, row in data.iterrows():
+                tr = index+1
+                fd = data['framewise_displacement'][index]
+                dvars = data['std_dvars'][index]
+                df.loc[len(df)] = [sub, task, run, tr, dvars, fd]
+    for run in range(1, 5, 1):
+        task = 'collector'
+        file_path = (base_dir + f'sub-temple{sub}_task-{task}_run-0{run}_desc-confounds_timeseries.tsv')
+        if os.path.exists(file_path):
+            data = pd.read_table(file_path)
+            for index, row in data.iterrows():
+                tr = index+1
+                fd = data['framewise_displacement'][index]
+                dvars = data['std_dvars'][index]
+                df.loc[len(df)] = [sub, task, run, tr, dvars, fd]
+    for run in range(1, 3, 1):
+        task = 'movie'
+        file_path = (base_dir + f'sub-temple{sub}_task-{task}_run-0{run}_desc-confounds_timeseries.tsv')
+        if os.path.exists(file_path):
+            data = pd.read_table(file_path)
+            for index, row in data.iterrows():
+                tr = index+1
+                fd = data['framewise_displacement'][index]
+                dvars = data['std_dvars'][index]
+                df.loc[len(df)] = [sub, task, run, tr, dvars, fd]
 
-        df.to_csv(out_path + 'all_motion.csv')      
+    df.to_csv(out_path + 'all_motion.csv')      
 
-def plot_arrow(subject, base_dir, out_path):
-    sub = subject
+def plot_arrow(sub, base_dir, out_path):
     df = pd.read_csv(out_path + 'all_motion.csv')
     a_data = df[df['task'] == 'arrow']
     
@@ -111,8 +109,7 @@ def plot_arrow(subject, base_dir, out_path):
         
         
         
-def plot_collector(subject, base_dir, out_path):
-    sub = subject
+def plot_collector(sub, base_dir, out_path):
     df = pd.read_csv(out_path + 'all_motion.csv')
     a_data = df[df['task'] == 'collector']
     
@@ -168,8 +165,7 @@ def plot_collector(subject, base_dir, out_path):
         plt.savefig(out_path + f'{sub}-collector-{measure}.png')
 
         
-def plot_movie(subject, base_dir, out_path):
-    sub = subject
+def plot_movie(sub, base_dir, out_path):
     df = pd.read_csv(out_path + 'all_motion.csv')
     a_data = df[df['task'] == 'movie']
     
