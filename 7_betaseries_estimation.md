@@ -4,7 +4,8 @@ based on Jeannette Mumford's work, essentially runs a GLM for each voxel ~ stimu
 ### betaseries-bids command in mindstorm (Neal's utilities) ###
 counfound list for fmriprep: csf:csf_derivative1:white_matter:white_matter_derivative1:trans_x:trans_x_derivative1:trans_y:trans_y_derivative1:trans_z:trans_z_derivative1:rot_x:rot_x_derivative1:rot_y:rot_y_derivative1:rot_z:rot_z_derivative1
 
-### 1. make sure BIDS data is pre-processed, skullstripped, and smoothed (see preprocessing.md)
+### 1. make sure BIDS data is pre-processed, skullstripped, and smoothed
+* See [preprocessing.md] (https://github.com/owenfriend24/temple/blob/main/1_preprocessing.md)
 ### 2. replace any NaN's in events files with zeroes
 ```
 fix_arrow.py <fmriprep_dir> <subject>
