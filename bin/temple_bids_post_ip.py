@@ -103,7 +103,7 @@ def main(data_dir):
     participants_file = os.path.join(data_dir, 'participants.tsv')
     df = pd.read_csv(participants_file, sep='\t')
     df = df.sort_values('participant_id')
-    df.to_csv(participants_file, sep='\t', index=False, na_rep='n/a')
+    
 
     # get all imaging data sidecar files
     prw = stat.S_IWRITE | stat.S_IREAD
@@ -152,7 +152,7 @@ def main(data_dir):
                         json.dump(prop, f, indent=4)
                 id += 1
         df.at[p_index, 'group'] = 'post_processed'
-
+    df.to_csv(participants_file, sep='\t', index=False, na_rep='n/a')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
