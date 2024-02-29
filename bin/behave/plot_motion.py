@@ -230,10 +230,10 @@ def main(data_dir, sub):
     run_com(f'mkdir {out_dir}/sub-{sub}')
     out_path = out_dir + f'sub-{sub}/'
 
-    format_motion_data(sub)
-    plot_arrow(sub)
-    plot_collector(sub)
-    plot_movie(sub)
+    format_motion_data(sub, base_dir, out_path)
+    plot_arrow(sub, base_dir, out_path)
+    plot_collector(sub, base_dir, out_path)
+    plot_movie(sub, base_dir, out_path)
     print('done')
 
 
