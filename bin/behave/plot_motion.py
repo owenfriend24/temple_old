@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from pathlib import Path
 import json
 import numpy as np
@@ -8,9 +10,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 import argparse
+import subprocess
 
 
-def run(command):
+def run_com(command):
     #print(f"Running command: {command}")
     subprocess.run(command, shell=True)
             
@@ -224,8 +227,8 @@ def plot_movie(subject):
 def main(data_dir, sub):
     base_dir = data_dir + f'sub-{sub}/func'
     out_dir = data_dir + 'motion_files'
-    run(f'mkdir {out_dir}/sub-{sub}')
-    out_path = out_dir + f'sub-{sub}/
+    run_com(f'mkdir {out_dir}/sub-{sub}')
+    out_path = out_dir + f'sub-{sub}/'
 
     format_motion_data(sub)
     plot_arrow(sub)
