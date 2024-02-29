@@ -11,6 +11,7 @@ import pandas as pd
 from glob import glob
 from bids import BIDSLayout
 
+# can keep this for now but should test whether any json's have those fields after re-running heudiconv on current subs, i've yet to see one
 def fix_dict(j):
     if 'time' in j and 'samples' in j['time']:
         if 'DataSetTrailingPadding' in j['time']['samples']:
@@ -93,6 +94,12 @@ def get_fieldmap_mapping(data_dir, subj_id):
 
 
 def main(data_dir):
+    # sort the participants file
+    participants_file = os.path.join(data_dir, 'participants.tsv')
+    df = pd.read_csv(participants_file, sep='\t')
+    df = df.sort_values('participant_id')
+    df.to_csv(participants_file, sep='\t', index=False, na_rep='n/a')
+
     # get all imaging data sidecar files
     prw = stat.S_IWRITE | stat.S_IREAD
     layout = BIDSLayout(data_dir)
@@ -111,36 +118,36 @@ def main(data_dir):
 
    # add IntendedFor field to fieldmaps
     for subject in layout.get_subjects():
-        fmappings = get_fieldmap_mapping(data_dir, subject)
-        id = 0
-        for fmap_run, func_runs in fmappings.items():
-            func_files = [
-                f'func/sub-{subject}_{func_run}_bold.nii.gz'
-                for func_run in func_runs
-                ]
-            sbref_files = [
-                f'func/sub-{subject}_{func_run}_sbref.nii.gz'
-                for func_run in func_runs
-                ]
-            fmap_files = layout.get(
-                datatype='fmap', extension='json', subject=subject, run=fmap_run
-            )
+        
+        ref = df[df['participant_id'] == subject]
+        p_index = ref.index[0]
+        if 'post_processed' not in ref.group.values:
             
-            for fmap_file in fmap_files:
-                prop = fmap_file.get_dict()
-                prop['IntendedFor'] = func_files + sbref_files
-                prop['B0FieldIdentifier'] = f'00000{id}'
-                os.chmod(fmap_file.path, prw)
-                with open(fmap_file.path, 'w') as f:
-                    json.dump(prop, f, indent=4)
-            id += 1
+            fmappings = get_fieldmap_mapping(data_dir, subject)
+            id = 0
+            for fmap_run, func_runs in fmappings.items():
+                func_files = [
+                    f'func/sub-{subject}_{func_run}_bold.nii.gz'
+                    for func_run in func_runs
+                    ]
+                sbref_files = [
+                    f'func/sub-{subject}_{func_run}_sbref.nii.gz'
+                    for func_run in func_runs
+                    ]
+                fmap_files = layout.get(
+                    datatype='fmap', extension='json', subject=subject, run=fmap_run
+                )
+                
+                for fmap_file in fmap_files:
+                    prop = fmap_file.get_dict()
+                    prop['IntendedFor'] = func_files + sbref_files
+                    prop['B0FieldIdentifier'] = f'00000{id}'
+                    os.chmod(fmap_file.path, prw)
+                    with open(fmap_file.path, 'w') as f:
+                        json.dump(prop, f, indent=4)
+                id += 1
+        df.at[p_index, 'group'] = 'post_processed'
 
-
-    # sort the participants file
-    participants_file = os.path.join(data_dir, 'participants.tsv')
-    df = pd.read_csv(participants_file, sep='\t')
-    df = df.sort_values('participant_id')
-    df.to_csv(participants_file, sep='\t', index=False, na_rep='n/a')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
