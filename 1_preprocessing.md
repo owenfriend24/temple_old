@@ -28,7 +28,7 @@ slaunch -J heudiconv "temple_heudiconv.sh {} $WORK/temple/sourcedata2 $HOME/anal
 * need to figure out whether the .json cleaning is necessary, test on group once group heudiconv goes through
 
 ```
-temple_bids_post.py $SCRATCH/temple/prisma_prepro
+temple_bids_post_ip.py $SCRATCH/temple/prisma_prepro
 ```  
 ## 4. Run fmriprep
 * runs via Singularity/Apptainer image in $WORK; currently testing to make sure it works. Still points to Neal's freesurfer license I believe
