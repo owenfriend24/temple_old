@@ -20,15 +20,19 @@ def run_com(command):
 def fix_dict(j):
     if 'time' in j and 'samples' in j['time']:
         if 'DataSetTrailingPadding' in j['time']['samples']:
+            run_com(f'echo problem_w_first_{subject}')
             del j['time']['samples']['DataSetTrailingPadding']
 
     if 'global' in j:
         if 'slices' in j['global']:
             if 'DataSetTrailingPadding' in j['global']['slices']:
+                run_com(f'echo problem_w_sec_{subject}')
                 del j['global']['slices']['DataSetTrailingPadding']
         if 'const' in j['global']:
             if 'DataSetTrailingPadding' in j['global']['const']:
+                run_com(f'echo problem_w_third_{subject}')
                 del j['global']['const']['DataSetTrailingPadding']
+                
 
 
 def load_json(file):
@@ -123,7 +127,7 @@ def main(data_dir):
 
    # add IntendedFor field to fieldmaps
     for subject in layout.get_subjects():
-        run_com(f'echo subject')
+        run_com(f'echo {subject}')
         ref = df[df['participant_id'] == subject]
         p_index = ref.index[0]
         if 'post_processed' not in ref.group.values:
