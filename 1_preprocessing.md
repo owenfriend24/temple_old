@@ -15,20 +15,21 @@ source profile
 ## 2. Convert source DICOM data to BIDS formatting
 * DICOM data comes off the scanner with slightly different file structures for the Prisma and the Skyra; different scripts and heuristic files needed depending on subject
 * 53 and below = Skyra, 56+ = Prisma
-* SKYRA
-```
-slaunch -J heudiconv "skyra_heudiconv.sh {} $WORK/temple/sourcedata2 $HOME/analysis/temple/bin/skyra_heuristic.py $SCRATCH/temple/skyra_prepro" $SUBIDS -N 1 -n 1 -r 00:30:00 -p development
-```
 * PRISMA
 ```
-slaunch -J heudiconv "temple_heudiconv.sh {} $WORK/temple/sourcedata2 $HOME/analysis/temple/bin/temple_heuristic.py $SCRATCH/temple/prisma_prepro" $SUBIDS -N 1 -n 1 -r 00:30:00 -p development
+slaunch -J heudiconv "temple_heudiconv.sh {} $WORK/temple/sourcedata2 $HOME/analysis/temple/bin/temple_heuristic.py $SCRATCH/temple/prepro_data" $SUBIDS -N 1 -n 1 -r 00:30:00 -p development
 ```
+* SKYRA
+```
+slaunch -J heudiconv "skyra_heudiconv.sh {} $WORK/temple/sourcedata2 $HOME/analysis/temple/bin/skyra_heuristic.py $SCRATCH/temple/prepro_data" $SUBIDS -N 1 -n 1 -r 00:30:00 -p development
+```
+
 ## 3. Add fieldmap information to BIDS formatted raw data
-* should not run on subjects that have already been run once it's been run on them once; assigns 'post_processed' to group in participants.tsv (need to test on group)
+* should not run on subjects that have already been run once it's been run on them once; assigns 'post_processed' to group in participants.tsv
 * need to figure out whether the .json cleaning is necessary, test on group once group heudiconv goes through
 
 ```
-temple_bids_post_ip.py $SCRATCH/temple/prisma_prepro
+temple_bids_post.py $SCRATCH/temple/prisma_prepro
 ```  
 ## 4. Run fmriprep
 * runs via Singularity/Apptainer image in $WORK; currently testing to make sure it works. Still points to Neal's freesurfer license I believe
@@ -43,7 +44,7 @@ temple_bids_post_ip.py $SCRATCH/temple/prisma_prepro
    * mem_mb = 60000
    * skip_bids_validation (make sure BIDS compliant when running heudiconv)
 ```
-slaunch -J fmriprep “temple_fmriprep.sh $SCRATCH/temple/prisma_prepro {}" $BIDIDS -N 1 -n 1 -r 08:00:00 -p normal
+slaunch -J fmriprep “temple_fmriprep.sh $SCRATCH/temple/prepro_data {}" $BIDIDS -N 1 -n 1 -r 08:00:00 -p normal
 ```
 
 ## 5. Create mask based on freesurfer parcellations and skullstrip functional runs
