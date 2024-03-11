@@ -31,7 +31,7 @@ slaunch -J heudiconv "skyra_heudiconv.sh {} $WORK/temple/sourcedata2 $HOME/analy
 ```
 temple_bids_post.py $SCRATCH/temple/prisma_prepro
 ```  
-## 4. Run fmriprep
+## 4. Run fmriprep (~ 8 hours)
 * runs via Singularity/Apptainer image in $WORK; currently testing to make sure it works. Still points to Neal's freesurfer license I believe
 * temple_fmriprep.sh includes command line that specifies some parameters including:
    * participant label - passed in with job launch; temple_### denotes raw data, temple### denotes data converted to BIDS (BIDS does not allow underscores)
@@ -47,18 +47,18 @@ temple_bids_post.py $SCRATCH/temple/prisma_prepro
 slaunch -J fmriprep “temple_fmriprep.sh $SCRATCH/temple/prepro_data {}" $BIDIDS -N 1 -n 1 -r 08:00:00 -p normal
 ```
 
-## 5. Create mask based on freesurfer parcellations and skullstrip functional runs
+## 5. Create mask based on freesurfer parcellations and skullstrip functional runs (~ 10 min. on development node)
 * fmriprep doesn't skullstrip the functional data, so we create a brainmask here using the freesurfer output and use it to skullstrip all functional runs
 ```
 prep_func_data.sh freesurfer_dir fmriprep_dir subject task num_runs
 ```
 
-## 6. Skullstrip anatomical image and create transform images/affine files for registration between functional, anatomical, and MNI space
+## 6. Skullstrip anatomical image and create transform images/affine files for registration between functional, anatomical, and MNI space (~ 10 min. on dev. node; issue with final WarpImageMultiTransform call at end)
 * Now skullstrip the anatomical image and create all files necessary to transform between different spaces
 ```
 mni_transforms.sh fmriprep_dir subject
 ```
-## 7. Smooth functional data with 4mm kernel
+## 7. Smooth functional data with 4mm kernel (~20 min.)
 * set up to smooth four runs right now, will need to edit for arrow
 * also will want to incorporate some of the 'clean_scratch' code here to make sure the files we're working with stay in BIDS format
 ```
