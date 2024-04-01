@@ -17,5 +17,8 @@ fix_collector.py fmriprep_dir subject
 ```
 fix_arrow.py fmriprep_dir subject
 ```
-
+### 4. Create separate formatted .txt files for each EV and for confounds (i.e., each of the 12 items)
+```
+prep_arrow.py fmriprep_dir subject
+```
  
