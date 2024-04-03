@@ -14,7 +14,7 @@ prep_arrow.py $FM both temple058 $FM/sub-temple058/func
 beta_fsfs.sh
 beta_files.sh temple058
 ```
-### 3. activate environment with pyMVPA working
+### 3. activate 'rsa' environment with pyMVPA and compatible packages set up
 ```
 . $HOME/analysis/temple/rsa/bin/activate
 ```
