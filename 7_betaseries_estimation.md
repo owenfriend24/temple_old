@@ -17,10 +17,14 @@ prep_arrow.py $FM both temple058 $FM/sub-temple058/func
 beta_fsfs.sh
 beta_files.sh temple058
 ```
-### 4. run betaseries estimation
+### 4. run betaseries estimation for each item in each run
 ```
 betaseries_est.py temple058
 ```
+### 5. merge beta images for pre and post triads, pre and post AC items
+```
+merge_betas_prepost.sh temple071
+```
 
 
 
@@ -44,7 +48,8 @@ betaseries_est.py temple058
 
 
 
-### betaseries-bids command in mindstorm (Neal's utilities) ###
+
+### betaseries-bids command in mindstorm (Neal's package) ###
 counfound list for fmriprep: csf:csf_derivative1:white_matter:white_matter_derivative1:trans_x:trans_x_derivative1:trans_y:trans_y_derivative1:trans_z:trans_z_derivative1:rot_x:rot_x_derivative1:rot_y:rot_y_derivative1:rot_z:rot_z_derivative1
 
 ### 1. make sure BIDS data is pre-processed, skullstripped, and smoothed
