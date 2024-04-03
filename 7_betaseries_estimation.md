@@ -2,20 +2,21 @@
 based on Jeannette Mumford's work, essentially runs a GLM for each voxel ~ stimulus and extracts the beta weight for the stimulus's effect on that voxel's activity
 
 ### running first level models with FSL and using design matrix to create beta images
-### 1. activate environment with pyMVPA working
-```
-. $HOME/analysis/temple/rsa/bin/activate
-```
-### 2. fix arrow output and create .txt files for confounds and each EV (will want to set up new directory structure for .txt files)
+
+### 1. fix arrow output and create .txt files for confounds and each EV (will want to set up new directory structure for .txt files)
 ```
 fix_arrow.py $FM temple058
 prep_arrow.py $FM both temple058 $FM/sub-temple058/func
 ```
-### 3. create fsf file for each EV and run feat_model to create design matrix
+### 2. create fsf file for each EV and run feat_model to create design matrix
 * need to set subject within beta_fsfs.sh script
 ```
 beta_fsfs.sh
 beta_files.sh temple058
+```
+### 3. activate environment with pyMVPA working
+```
+. $HOME/analysis/temple/rsa/bin/activate
 ```
 ### 4. run betaseries estimation for each item in each run
 ```
