@@ -3,10 +3,11 @@ based on Jeannette Mumford's work, essentially runs a GLM for each voxel ~ stimu
 
 ### running first level models with FSL and using design matrix to create beta images
 
-### 1. fix arrow output and create .txt files for confounds and each EV (will want to set up new directory structure for .txt files)
+### 1. fix arrow output and create .txt files for confounds and each EV
+will output into sub/func/arrow_txt
 ```
 fix_arrow.py $FM temple058
-prep_arrow.py $FM both temple058 $FM/sub-temple058/func
+prep_arrow.py $FM both temple058
 ```
 ### 2. create fsf file for each EV and run feat_model to create design matrix
 * need to set subject within beta_fsfs.sh script
