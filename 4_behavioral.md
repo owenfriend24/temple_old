@@ -3,6 +3,9 @@
 temple_bids_events.py $WORK/temple/sourcebehav/ $SCRATCH/temple/skyra_prepro/
 ```
  * need to make sure subject number listed in tasks.py to run
+```
+vim $WORK/tempenv/lib/python3.9/site-packages/temple/tasks.py
+```
  * need to replace nans with 0's or remove for later analyses
  * collector and arrow output are both a little weird; right now have fix scripts but can integrate them all later
    
