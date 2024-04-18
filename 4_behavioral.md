@@ -16,7 +16,7 @@ vim $WORK/tempenv/lib/python3.9/site-packages/temple/tasks.py
 fix_arrow.py fmriprep_dir subject
 ```
 
-### 3. Fix collector task output 
+### 3. Fix collector task output - problem with fix_collector when running after reformatting arrow files. will need to fix later. for now, fix_collector works with unformatted arrow (i.e. directly after temple_bids_events)
 * adds/fixes triad (1-4) and position (1-3) values
 ```
 fix_collector.py fmriprep_dir subject
