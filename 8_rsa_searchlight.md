@@ -22,3 +22,7 @@ cluster -i {input} -t 0.99 --minextent= ### --oindex = {output mask}
 sl_masks_to_func.sh temple016 $FM AC adult_IFG_AC_mask
 mds_sub.py $FM temple016 $FM/sub-temple016/transforms/adult_IFG_AC_mask.nii.gz adult_IFG_AC
 batch_mds_subs.sh $adults
+
+
+### symmetry analyses (in progress) - need to create dropped run version; so far only looking at Apost and B/Cpre, will need to add a CpostApre and Bpost Apre function for full asymmetry indices
+sl_symmetry.py temple016 whole_brain AC
