@@ -15,7 +15,7 @@ temple_sl_prepost.py temple071 whole_brain
 ac_rs_values.py temple071 whole_brain
 ```
 
-# some commented out code related to residuals in betaseries_est.py - pretty sure don't need that anymore because I have pull_resid.py function but left just in case it comes up later
+* some commented out code related to residuals in betaseries_est.py - pretty sure don't need that anymore because I have pull_resid.py function but left just in case it comes up later
 
 ### cluster
 cluster -i {input} -t 0.99 --minextent= ### --oindex = {output mask}
