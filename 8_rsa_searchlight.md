@@ -34,6 +34,5 @@ sl_symmetry.py temple016 whole_brain AC
 ### check back later with already completed sub to make sure this is the right order of functions and such
 mni_hip_masks.sh $FM temple069
 mkdir $FM/searchlight/prepost_AC_txt/temple069
-ac_rs_values.py temple069 b_hip AC
-
-* ac_rs_values1.py works, need to figure out the difference between ac_rs_values and ac_rs_values1 not sure...
+ac_rs_values.py temple069 sl AC
+* looks good
