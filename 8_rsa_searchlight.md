@@ -29,3 +29,11 @@ batch_mds_subs.sh $adults
 
 ### symmetry analyses (in progress) - need to create dropped run version; so far only looking at Apost and B/Cpre, will need to add a CpostApre and Bpost Apre function for full asymmetry indices
 sl_symmetry.py temple016 whole_brain AC
+
+
+### check back later with already completed sub to make sure this is the right order of functions and such
+mni_hip_masks.sh $FM temple069
+mkdir $FM/searchlight/prepost_AC_txt/temple069
+ac_rs_values.py temple069 b_hip AC
+
+* something's off...
