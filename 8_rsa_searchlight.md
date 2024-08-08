@@ -14,6 +14,9 @@ temple_sl_prepost.py temple071 whole_brain
 ```
 ac_rs_values.py temple071 whole_brain
 ```
+
+# need to fix betaseries_est.py to output residuals for cluster simulations
+
 ### cluster
 cluster -i {input} -t 0.99 --minextent= ### --oindex = {output mask}
 
