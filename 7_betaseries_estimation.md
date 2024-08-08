@@ -10,9 +10,9 @@ fix_arrow.py $FM temple058
 prep_arrow.py $FM both temple058
 ```
 ### 2. create fsf file for each EV and run feat_model to create design matrix
-* need to set subject within beta_fsfs.sh script
+
 ```
-beta_fsfs.sh
+beta_fsfs.sh temple058
 beta_files.sh temple058
 ```
 ### 3. activate 'rsa' environment with pyMVPA and compatible packages set up
