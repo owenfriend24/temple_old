@@ -6,7 +6,7 @@ pull_resid.py $FS $FM temple_069
 ```
 temple_acf.sh $FM temple_069
 ```
-3. create group mask (need to come back and troubleshoot this, transforms are looking way off, including at the individual subject level)
+3. create group mask
 ```
 group_masks.py $FS $FM adult
 ```
