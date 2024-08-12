@@ -6,7 +6,7 @@ pull_resid.py $FS $FM temple_069
 ```
 temple_acf.sh $FM temple_069
 ```
-3. create group mask (need a new function for this)
+3. create group mask (need to come back and troubleshoot this, transforms are looking way off)
 ```
 group_masks.py $FS $FM adult
 ```
