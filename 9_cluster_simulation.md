@@ -8,7 +8,7 @@ temple_acf.sh $FM temple_069
 ```
 3. create group mask (need a new function for this)
 ```
-
+group_masks.py $FS $FM adult
 ```
 4. cluster simulation - run in both whole brain and hippocampus (i.e., small volume correction)
    * pull average acf coefficient values by age group from http://localhost:8888/notebooks/Documents/temple_local/analysis/extract_acf.ipynb?
