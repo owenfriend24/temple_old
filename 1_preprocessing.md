@@ -32,6 +32,7 @@ slaunch -J heudiconv "skyra_heudiconv.sh {} $WORK/temple/sourcedata2 $HOME/analy
 temple_bids_post.py $SCRATCH/temple/prisma_prepro
 ```  
 ## 4. Run fmriprep (~ 8 hours)
+* note - if re-running a previously processed subject, need to change location of the input BIDS directory; otherwise, fmriprep will think this subject has already been run and won't re-process
 * runs via Singularity/Apptainer image in $WORK; currently testing to make sure it works. Still points to Neal's freesurfer license I believe
 * temple_fmriprep.sh includes command line that specifies some parameters including:
    * participant label - passed in with job launch; temple_### denotes raw data, temple### denotes data converted to BIDS (BIDS does not allow underscores)
