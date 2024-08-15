@@ -13,5 +13,4 @@ group_masks.py $FS $FM adult
 4. cluster simulation - run in both whole brain and hippocampus (i.e., small volume correction)
    * pull average acf coefficient values by age group from http://localhost:8888/notebooks/Documents/temple_local/analysis/extract_acf.ipynb?
 ```
-clust_sim.sh
-
+clust_sim.sh $FM
