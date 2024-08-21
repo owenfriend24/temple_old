@@ -11,8 +11,11 @@ temple_sl_prepost.py temple071 whole_brain
 
 ### 3. whole brain / FS hippocampus RSA
 * calls prepost_roi.py
+* to pull values for statistical analyses
+  
 ```
-ac_rs_values.py temple071 whole_brain
+mni_hip_masks.sh $FM temple071
+ac_rs_values.py temple071 whole_brain ; not getting same results as before right now, think it's a mask issue
 ```
 
 * some commented out code related to residuals in betaseries_est.py - pretty sure don't need that anymore because I have pull_resid.py function but left just in case it comes up later
@@ -35,4 +38,4 @@ sl_symmetry.py temple016 whole_brain AC
 mni_hip_masks.sh $FM temple069
 mkdir $FM/searchlight/prepost_AC_txt/temple069
 ac_rs_values.py temple069 sl AC
-* looks good
+* looks good - not lining up with earlier subjects...
