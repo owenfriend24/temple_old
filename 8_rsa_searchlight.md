@@ -15,7 +15,7 @@ temple_sl_prepost.py temple071 whole_brain
   
 ```
 mni_hip_masks.sh $FM temple071
-ac_rs_values.py temple071 whole_brain ; not getting same results as before right now, think it's a mask issue
+ac_rs_values.py temple071 sl AC
 ```
 
 * some commented out code related to residuals in betaseries_est.py - pretty sure don't need that anymore because I have pull_resid.py function but left just in case it comes up later
