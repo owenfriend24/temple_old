@@ -11,5 +11,5 @@ cluster -i GROUP_IMAGE -t 0.99 --minextent=THRESHOLD --oindex=OUT_NAME
 ```
 for within hip, need to run on a masked image:
 ```
-fslmaths GROUP_IMAGE -mas MASK OUT
+fslmaths GROUP_IMAGE -mas $HOME/analysis/temple/bin/templates/b_hip_func.nii.gz OUT
 ```
