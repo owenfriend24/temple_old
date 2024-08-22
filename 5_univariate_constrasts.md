@@ -9,14 +9,14 @@
 univ_txt_files.py fmriprep_dir file_type subject out_dir
 ```
 ```
-univ_txt_files.py $FMDIR collector temple024 $FMDIR/sub-temple024/univ/
+univ_txt_files.py $FM collector temple024 $FM/sub-temple024/univ/
 ```
-### 2. create first level .fsf files based on template
+### 2. create first level .fsf files based on template (updating 8/22/24)
 ```
 edit_first_uni.sh template out_path subject fmriprep_dir
 ```
 ```
-edit_first_uni.sh $HOME/analysis/temple/univ/univ_first_template.fsf $FMDIR/sub-temple024/univ/ temple024 $FMDIR
+edit_first_uni.sh $HOME/analysis/temple/univ/new_template.fsf $FM/sub-temple024/univ/ temple024 $FM
 ```
 ### 3. run first level univariate analyses, save to native directory and transform output to MNI space for second level
 ```
