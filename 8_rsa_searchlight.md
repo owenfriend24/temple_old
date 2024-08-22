@@ -24,7 +24,7 @@ ac_rs_values.py temple071 sl AC
 cluster -i {input} -t 0.99 --minextent= ### --oindex = {output mask}
 
 
-### MDS within extracted SL ROI masks
+### MDS within extracted SL ROI masks - didn't really pan out with first try but can come back to later
 sl_masks_to_func.sh temple016 $FM AC adult_IFG_AC_mask
 mds_sub.py $FM temple016 $FM/sub-temple016/transforms/adult_IFG_AC_mask.nii.gz adult_IFG_AC
 batch_mds_subs.sh $adults
@@ -34,8 +34,3 @@ batch_mds_subs.sh $adults
 sl_symmetry.py temple016 whole_brain AC
 
 
-### check back later with already completed sub to make sure this is the right order of functions and such
-mni_hip_masks.sh $FM temple069
-mkdir $FM/searchlight/prepost_AC_txt/temple069
-ac_rs_values.py temple069 sl AC
-* looks good - not lining up with earlier subjects...
