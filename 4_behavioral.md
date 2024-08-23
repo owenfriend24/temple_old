@@ -1,6 +1,6 @@
 ## 1. Convert behavioral data into BIDS format within BIDS formatted subject directories
 ```
-temple_bids_events.py $WORK/temple/sourcebehav/ $SCRATCH/temple/skyra_prepro/
+temple_bids_events.py $WORK/temple/sourcebehav/ $FM
 ```
  * need to make sure subject number listed in tasks.py to run
 ```
