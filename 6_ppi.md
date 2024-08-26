@@ -15,6 +15,7 @@ ppi_txt_behav.py fmriprep_dir both subject out_dir/
 3. create first level .fsf file based on template, run with Feat
 ``` 
 edit_first_ppi.sh ppi_first_template.fsf out_path subject fmriprep_dir
+edit_first_ppi.sh /home1/09123/ofriend/analysis/temple/univ/ppi_first_template.fsf $FM/sub-temple016/univ/ppi/ temple016 $FM
 run_first_ppi.sh fmriprep_dir subject
 ```
 4. create second level .fsf file based on template, run with Feat
