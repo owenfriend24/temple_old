@@ -1,10 +1,14 @@
 ### benchmark analysis - whole hippocampus as seed, test for connectivity differences during boundary trials for early vs. later learning
 
-1. create bilateral hippocampus mask based on freesurfer output, extract eigenvariate value for each TR and format as .txt file
+1 (old). create bilateral hippocampus mask based on freesurfer output, extract eigenvariate value for each TR and format as .txt file
 ```
 ppi_hpc_mean.sh freesurfer_dir fmriprep_dir subject task
 ```
-2. create 2 .txt files for participant's behavior, including contrast of interest and trials to include
+1. (new). use hippocampus mask reverse-normalized into participant space, extract eigenvalue and save out
+```
+ppi_hip_new.sh $FM temple-016 collector
+```
+3. create 2 .txt files for participant's behavior, including contrast of interest and trials to include
 ```
 ppi_txt_behav.py fmriprep_dir both subject out_dir/
 ```
