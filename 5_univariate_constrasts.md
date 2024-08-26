@@ -26,6 +26,12 @@ run_first_unis.sh fmriprep_dir subject
 ```
 edit_second_uni.sh template out_path subject fmriprep_dir
 ```
+
+* for subs with excluded collector runs (currently 064 run 3 and 060 run 2):
+  * NOTE: make sure correct run is excluded in template based on subject. can just edit in text edit 
+```
+edit_second_uni.sh $HOME/analysis/temple/univ/new_2nd_drop_middle_run.fsf $FM/sub-temple064/univ/ temple064 $FM
+```
 ### 5. run second level analyses
 ```
 run_second_unis.sh fmriprep_dir subject
