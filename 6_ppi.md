@@ -20,7 +20,7 @@ run_first_ppi.sh fmriprep_dir subject
 ```
 4. create second level .fsf file based on template, run with Feat
 ```
-edit_second_fsf.sh 2nd_level_ppi_template.fsf out_path subject fmriprep_dir
+edit_second_ppi.sh 2nd_level_ppi_template.fsf out_path subject fmriprep_dir
 run_second_ppis.sh fmriprep_dir subject
 ```
 5. run third level ppi to average across subjects
