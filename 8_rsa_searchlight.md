@@ -39,6 +39,10 @@ sl_symmetry.py temple016 whole_brain AC
 ```
 sl_symmetry_values.py temple016 sl_hip AB
 ```
+* for dropping run 6
+```
+sl_symmetry_values_droprun.py temple023 sl_hip AB 6
+```
 
 
 
