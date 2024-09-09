@@ -31,6 +31,14 @@ batch_mds_subs.sh $adults
 
 
 ### symmetry analyses (in progress) - need to create dropped run version; current function compares A(POST) to B(PRE) or C(PRE) depending on the comparison specified. 
+* to run a searchlight:
+```
 sl_symmetry.py temple016 whole_brain AC
+```
+* to pull .txt files with within and across triad similarity values
+```
+sl_symmetry_values.py temple016 sl_hip AB
+```
+
 
 
