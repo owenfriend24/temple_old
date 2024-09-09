@@ -30,7 +30,7 @@ mds_sub.py $FM temple016 $FM/sub-temple016/transforms/adult_IFG_AC_mask.nii.gz a
 batch_mds_subs.sh $adults
 
 
-### symmetry analyses (in progress) - need to create dropped run version; so far only looking at Apost and B/Cpre, will need to add a CpostApre and Bpost Apre function for full asymmetry indices
+### symmetry analyses (in progress) - need to create dropped run version; current function compares A(POST) to B(PRE) or C(PRE) depending on the comparison specified. 
 sl_symmetry.py temple016 whole_brain AC
 
 
