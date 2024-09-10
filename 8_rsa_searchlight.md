@@ -43,6 +43,9 @@ sl_symmetry_values.py temple016 sl_hip AB
 ```
 sl_symmetry_values_droprun.py temple023 sl_hip AB 6
 ```
-
+* for apre bpost
+```
+sl_symmetry_values_BA.py temple016 sl_hip BA
+```
 
 
