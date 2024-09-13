@@ -1,4 +1,4 @@
-## Based on Schapiro et al., 2012 (Current Bio)
+## Quantifying symmetry of memory representations based on Schapiro et al., 2012 (Current Bio)
 * Goal is to quantify integration as ApostBpre and ApostCpre and then compare to ApreBpost and ApreCpost
 * If Item A evokes Item B, that's evidence of integration in one direction.
 * If Item B also evokes Item A, we have a symmetrical memory representation indicative of integration in both directions.
@@ -47,3 +47,14 @@ sl_symmetry_values_CA.py temple016 sl_hip AC
 sl_symmetry_values_BA.py temple023 sl_hip AB 6
 sl_symmetry_values_CA.py temple070 sl_hip AC 3
 ```
+
+
+3. Download relevant .txt files via CyberDuck, aggregate for analysis in R in [Jupyter Notebook] (http://localhost:8888/notebooks/Documents/temple_local/analysis/searchlight/symmetry_analyses.ipynb?)
+  
+
+5. Analyze in R - /Users/owenfriend/Document/temple_local/analysis/searchlight/asymmetry_analyses.R
+    * Note; I'm an idiot and spelled asymmetry wrong in the current aggregated file. Need to fix later
+
+
+
+
