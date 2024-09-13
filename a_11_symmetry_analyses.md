@@ -49,7 +49,7 @@ sl_symmetry_values_CA.py temple070 sl_hip AC 3
 ```
 
 
-3. Download relevant .txt files via CyberDuck, aggregate for analysis in R in [Jupyter Notebook] (http://localhost:8888/notebooks/Documents/temple_local/analysis/searchlight/symmetry_analyses.ipynb?)
+3. Download relevant .txt files via CyberDuck, aggregate for analysis in R in [Jupyter Notebook](http://localhost:8888/notebooks/Documents/temple_local/analysis/searchlight/symmetry_analyses.ipynb?)
   
 
 5. Analyze in R - /Users/owenfriend/Document/temple_local/analysis/searchlight/asymmetry_analyses.R
