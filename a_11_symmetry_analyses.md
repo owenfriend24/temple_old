@@ -53,7 +53,7 @@ sl_symmetry_values_CA.py temple070 sl_hip AC 3
   
 
 5. Analyze in R - /Users/owenfriend/Document/temple_local/analysis/searchlight/asymmetry_analyses.R
-    * Note; I'm an idiot and spelled asymmetry wrong in the current aggregated file. Need to fix later
+    * Note; I'm an idiot and spelled asymmetry wrong in the current aggregated file. Fixed in Jupyter Notebook but will need to fix in R after generating new aggregated file
 
 
 
