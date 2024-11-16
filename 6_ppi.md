@@ -6,7 +6,7 @@ ppi_hpc_mean.sh freesurfer_dir fmriprep_dir subject task
 ```
 1. (new). use hippocampus mask reverse-normalized into participant space, extract eigenvalue and save out
 ```
-ppi_hip_new.sh $FM temple-016 collector
+ppi_hip_new.sh $FM temple016 collector $CORR
 ```
 3. create 2 .txt files for participant's behavior, including contrast of interest and trials to include
 ```
