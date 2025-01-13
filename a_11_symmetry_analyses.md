@@ -21,6 +21,7 @@ e.g.,
 ```
 sl_symmetry_values.py temple016 sl_hip AB
 sl_symmetry_values.py temple016 sl_hip AC
+sl_symmetry_values.py temple016 sl_hip BC
 ```
 1b. ApostBpre and ApostCpre for subjects with a pre- or post-exposure run excluded due to motion
 ```
@@ -36,7 +37,9 @@ sl_symmetry_values_droprun.py temple023 sl_hip AC 6
 ```
 sl_symmetry_values_BA.py SUBJECT MASK COMPARISON
 sl_symmetry_values_CA.py SUBJECT MASK COMPARISON
+sl_symmetry_values_BC.py temple016 sl_hip AC
 ```
+* these also all call the same function (sl_symm_values_function_BA.py) but use the different beta directories to do the correct comparisons, can go back and code more efficiently later
 e.g.,
 ```
 sl_symmetry_values_BA.py temple016 sl_hip AB
